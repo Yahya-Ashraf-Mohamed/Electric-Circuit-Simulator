@@ -1,57 +1,9 @@
 ﻿  ActionAddRes.cpp
   ApplicationManager.cpp
-  CMUgraphics.cpp
-C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\CMUgraphicsLib\CMUgraphics.cpp(257,9): warning C4101: 'iX': unreferenced local variable
-C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\CMUgraphicsLib\CMUgraphics.cpp(257,13): warning C4101: 'iY': unreferenced local variable
-C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\CMUgraphicsLib\CMUgraphics.cpp(1357,23): warning C4018: '>': signed/unsigned mismatch
-  colors.cpp
-  image.cpp
-C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\CMUgraphicsLib\image.cpp(115,29): warning C4018: '<': signed/unsigned mismatch
-  keyqueue.cpp
-  mousequeue.cpp
-  windowinput.cpp
   Component.cpp
   Connection.cpp
   Resistor.cpp
-  main.cpp
   UI.cpp
-  Generating Code...
-  jpegload.c
-  jcomapi.c
-  jcparam.c
-  jdapimin.c
-  jdapistd.c
-  jdatasrc.c
-  jdcoefct.c
-  jdcolor.c
-  jddctmgr.c
-  jdhuff.c
-  jdinput.c
-  jdmainct.c
-  jdmarker.c
-  jdmaster.c
-  jdmerge.c
-  jdphuff.c
-  jdpostct.c
-  jdsample.c
-  jdtrans.c
-  jerror.c
-C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\CMUgraphicsLib\jpeg\jerror.c(169,30): warning C4047: 'function': 'const size_t' differs in levels of indirection from 'const char *'
-C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\CMUgraphicsLib\jpeg\jerror.c(169,23): warning C4024: 'sprintf_s': different types for formal and actual parameter 2
-C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\CMUgraphicsLib\jpeg\jerror.c(171,30): warning C4047: 'function': 'const size_t' differs in levels of indirection from 'const char *'
-C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\CMUgraphicsLib\jpeg\jerror.c(171,23): warning C4024: 'sprintf_s': different types for formal and actual parameter 2
-C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\CMUgraphicsLib\jpeg\jerror.c(172,24): warning C4047: 'function': 'const char *const ' differs in levels of indirection from 'int'
-C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\CMUgraphicsLib\jpeg\jerror.c(172,21): warning C4024: 'sprintf_s': different types for formal and actual parameter 3
-  Generating Code...
-  Compiling...
-  jidctflt.c
-  jidctfst.c
-  jidctint.c
-  jidctred.c
-  jmemmgr.c
-  jmemnobs.c
-  jquant1.c
-  jquant2.c
-  jutils.c
+  main.cpp
   Generating Code...
   CIE202-Proj.vcxproj -> C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\x64\Debug\CIE202-Proj.exe
