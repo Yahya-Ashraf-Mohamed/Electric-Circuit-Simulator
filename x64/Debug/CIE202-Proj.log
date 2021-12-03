@@ -1,9 +1,2 @@
-﻿  ActionAddRes.cpp
-  ApplicationManager.cpp
-  Component.cpp
-  Connection.cpp
-  Resistor.cpp
-  UI.cpp
-  main.cpp
-  Generating Code...
+﻿  UI.cpp
   CIE202-Proj.vcxproj -> C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\x64\Debug\CIE202-Proj.exe

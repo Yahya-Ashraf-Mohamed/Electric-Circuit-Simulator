@@ -38,9 +38,18 @@ class UI
 	{
 		//Note: Items are ordered here as they appear in the menu
 		//If you want to change the menu items order, just change the order here
-		ITM_RES,		//Resistor item in menu
-	
-		ITM_EXIT,		//Exit item
+		ITM_RES,				  //Resistor item in menu
+		ITM_Battery,		     // Battery item in menu
+		ITM_Switch,		        // Switch item in menu 
+		ITM_Bulb,			   // Bulb item in menu
+		ITM_Ground,			  // Ground item in menu
+		ITM_Buzzer,			 // Buzzer item in menu 
+		ITM_Fuse,	        // Fuse item in menu
+		ITM_Wire,          // Wire item in menu
+		Design_Mood,      // Change mood From simulation mood to design mood
+		Simulation_Mood, // Change mood From design mood to simulation mood
+		ITM_EXIT,	    // Exit item
+
 		//TODO: Add more items names here
 	
 		ITM_DSN_CNT		//no. of design menu items ==> This should be the last line in this enum
@@ -109,9 +118,30 @@ public:
 
 		
 	// Draws a resistor
-	void DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected = false) const;
+	void Draw_Resistor(const GraphicsInfo &r_GfxInfo, bool selected = false) const;
+	// Draws a battery
+	void Draw_Battery(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
 
-	///TODO: Make similar functions for drawing all other components, connections, .. etc
+	// Draws an opened Switch
+	void Draw_Open_Switch(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+	// Draws an Closed Switch
+	void Draw_Closed_Switch(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+
+	// Draws On Bulb
+	void Draw_On_Bulb(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+	// Draws Off Bulb
+	void Draw_Off_Bulb(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+
+	// Draws a Ground
+	void Draw_Ground(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+	// Draws a Buzzer
+	void Draw_Buzzer(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+	// Draws a Fuse
+	void Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+	// Draws a Wire
+	void Draw_Wire(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+
+
 
 	// Draws Connection
 	void DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected = false) const;

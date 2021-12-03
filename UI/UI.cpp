@@ -98,8 +98,16 @@ ActionType UI::GetUserAction() const
 			switch (ClickedItemOrder)
 			{
 			case ITM_RES:	return ADD_RESISTOR;
-			case ITM_EXIT:	return EXIT;	
-			
+			case ITM_EXIT:	return EXIT;
+
+			case ITM_Battery: return Add_Battery;
+			case ITM_Switch:	return Add_Switch;
+			case ITM_Bulb:	return Add_Bulb;
+			case ITM_Ground: return Add_Ground;
+			case ITM_Buzzer:	return Add_Buzzer;
+			case ITM_Fuse:	return Add_Fuse;
+			case ITM_Wire:	return Add_Wire;
+
 			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -134,7 +142,7 @@ void UI::ChangeTitle(string Title) const
 //////////////////////////////////////////////////////////////////////////////////
 void UI::CreateStatusBar() const
 {
-	pWind->SetPen(RED,3);
+	pWind->SetPen(BLACK,3);
 	pWind->DrawLine(0, height-StatusBarHeight, width, height-StatusBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////
@@ -166,7 +174,7 @@ void UI::ClearStatusBar()const
 //Clears the drawing (degin) area
 void UI::ClearDrawingArea() const
 {
-	pWind->SetPen(RED, 1);
+	pWind->SetPen(BLACK, 1);
 	pWind->SetBrush(WHITE);
 	pWind->DrawRectangle(0, ToolBarHeight, width, height - StatusBarHeight);
 	
@@ -177,14 +185,21 @@ void UI::CreateDesignToolBar()
 {
 	AppMode = DESIGN;	//Design Mode
 
-	//You can draw the tool bar icons in any way you want.
 
-	//First prepare List of images for each menu item
+	//List of images for each menu item
 	string MenuItemImages[ITM_DSN_CNT];
-	MenuItemImages[ITM_RES] = "images\\Menu\\Menu_Resistor.jpg";
+	MenuItemImages[ITM_RES] = "images\\Menu\\Menu_Resistor_image.jpg";
+	MenuItemImages[ITM_Battery] = "images\\Menu\\Menu_Battery.jpg";
+	MenuItemImages[ITM_Switch] = "images\\Menu\\Menu_Open_Switch.jpg";
+	MenuItemImages[ITM_Bulb] = "images\\Menu\\Menu_Closed_Bulb.jpg";
+	MenuItemImages[ITM_Ground] = "images\\Menu\\Menu_Ground.jpg";
+	MenuItemImages[ITM_Buzzer] = "images\\Menu\\Menu_Buzzer.jpg";
+	MenuItemImages[ITM_Fuse] = "images\\Menu\\Menu_Fuse.jpg";
+	MenuItemImages[ITM_Wire] = "images\\Menu\\Menu_Wire.jpg";
+	MenuItemImages[Design_Mood] = "images\\Menu\\Menu_Design.jpg";
+	MenuItemImages[Simulation_Mood] = "images\\Menu\\Menu_simulation.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
-	//TODO: Prepare image for each menu item and add it to the list
 
 	//Draw menu item one image at a time
 	for(int i=0; i<ITM_DSN_CNT; i++)
@@ -192,9 +207,14 @@ void UI::CreateDesignToolBar()
 
 
 	//Draw a line under the toolbar
-	pWind->SetPen(RED,3);
+	pWind->SetPen(BLACK,3);
 	pWind->DrawLine(0, ToolBarHeight, width, ToolBarHeight);	
-
+	pWind->DrawLine(0, 0, width, 0);
+	pWind->DrawLine(0, 0, 0, ToolBarHeight);
+	pWind->DrawLine(1184, 0, 1184, ToolBarHeight);
+	for (int position = 0; position < 940; position=position+80) {
+		pWind->DrawLine(position, 0, position, ToolBarHeight);
+	};
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 //Draws the menu (toolbar) in the simulation mode
@@ -211,19 +231,125 @@ void UI::CreateSimulationToolBar()
 //								Components Drawing Functions							//
 //======================================================================================//
 
-void UI::DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected) const
+void UI::Draw_Resistor(const GraphicsInfo &r_GfxInfo, bool selected) const
 {
 	string ResImage;
 	if(selected)	
-		ResImage ="Images\\Comp\\Resistor_HI.jpg";	//use image of highlighted resistor
+		ResImage ="Images\\Comp\\Resistor_image_HI.jpg";	//use image of highlighted resistor
 	else  
-		ResImage = "Images\\Comp\\Resistor.jpg";	//use image of the normal resistor
+		ResImage = "Images\\Comp\\Resistor_image.jpg";	//use image of the normal resistor
 
 	//Draw Resistor at Gfx_Info (1st corner)
 	pWind->DrawImage(ResImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
-//TODO: Add similar functions to draw all other components
+void UI::Draw_Battery(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string Battery_Image;
+	if (selected)
+		Battery_Image = "Images\\Comp\\Battery_image_HI.jpg";	//use image of highlighted resistor
+	else
+		Battery_Image = "Images\\Comp\\Battery_image.jpg";	//use image of the normal resistor
+
+	//Draw Battery at Gfx_Info (1st corner)
+	pWind->DrawImage(Battery_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+
+void UI::Draw_Open_Switch(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string Open_Switch_Image;
+	if (selected)
+		Open_Switch_Image = "Images\\Comp\\Open_Switch_HI.jpg";	//use image of highlighted resistor
+	else
+		Open_Switch_Image = "Images\\Comp\\Open_Switch.jpg";	//use image of the normal resistor
+
+	//Draw Battery at Gfx_Info (1st corner)
+	pWind->DrawImage(Open_Switch_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+
+void UI::Draw_Closed_Switch(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string Closed_Switch_Image;
+	if (selected)
+		Closed_Switch_Image = "Images\\Comp\\Closed_Switch_HI.jpg";	//use image of highlighted resistor
+	else
+		Closed_Switch_Image = "Images\\Comp\\Closed_Switch.jpg";	//use image of the normal resistor
+
+	//Draw Battery at Gfx_Info (1st corner)
+	pWind->DrawImage(Closed_Switch_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+
+void UI::Draw_On_Bulb(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string On_Bulb_Image;
+	if (selected)
+		On_Bulb_Image = "Images\\Comp\\ON_Bulb_HI.jpg";	//use image of highlighted resistor
+	else
+		On_Bulb_Image = "Images\\Comp\\ON_Bulb.jpg";	//use image of the normal resistor
+
+	//Draw Battery at Gfx_Info (1st corner)
+	pWind->DrawImage(On_Bulb_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+
+void UI::Draw_Off_Bulb(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string Off_Bulb_Image;
+	if (selected)
+		Off_Bulb_Image = "Images\\Comp\\Closed_Bulb_HI.jpg";	//use image of highlighted resistor
+	else
+		Off_Bulb_Image = "Images\\Comp\\Closed_Bulb.jpg";	//use image of the normal resistor
+
+	//Draw Battery at Gfx_Info (1st corner)
+	pWind->DrawImage(Off_Bulb_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+
+void UI::Draw_Ground(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string Ground_Image;
+	if (selected)
+		Ground_Image = "Images\\Comp\\Ground_HI.jpg";	//use image of highlighted resistor
+	else
+		Ground_Image = "Images\\Comp\\Ground.jpg";	//use image of the normal resistor
+
+	//Draw Battery at Gfx_Info (1st corner)
+	pWind->DrawImage(Ground_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+
+void UI::Draw_Buzzer(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string Buzzer_Image;
+	if (selected)
+		Buzzer_Image = "Images\\Comp\\Buzzer_image_HI.jpg";	//use image of highlighted resistor
+	else
+		Buzzer_Image = "Images\\Comp\\Buzzer_image.jpg";	//use image of the normal resistor
+
+	//Draw Battery at Gfx_Info (1st corner)
+	pWind->DrawImage(Buzzer_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+
+void UI::Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string Fuze_Image;
+	if (selected)
+		Fuze_Image = "Images\\Comp\\Fuse_HI.jpg";	//use image of highlighted resistor
+	else
+		Fuze_Image = "Images\\Comp\\Fuse.jpg";	//use image of the normal resistor
+
+	//Draw Battery at Gfx_Info (1st corner)
+	pWind->DrawImage(Fuze_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+
+void UI::Draw_Wire(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string Wire_Image;
+	if (selected)
+		Wire_Image = "Images\\Comp\\Wire_HI.jpg";	//use image of highlighted resistor
+	else
+		Wire_Image = "Images\\Comp\\Wire.jpg";	//use image of the normal resistor
+
+	//Draw Battery at Gfx_Info (1st corner)
+	pWind->DrawImage(Wire_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
 
 
 
