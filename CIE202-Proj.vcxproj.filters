@@ -141,6 +141,15 @@
     <ClCompile Include="Actions\ActionAddRes.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Components\Battery.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Bulb.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Edit.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h">
@@ -219,6 +228,15 @@
     </ClInclude>
     <ClInclude Include="Actions\ActionAddRes.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Battery.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Bulb.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Edit.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
