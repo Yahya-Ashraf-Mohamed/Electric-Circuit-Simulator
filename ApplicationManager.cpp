@@ -1,6 +1,6 @@
 #include "ApplicationManager.h"
 #include "Actions\ActionAddRes.h"
-
+#include "Actions/ActionAddBulb.h"
 
 ApplicationManager::ApplicationManager()
 {
@@ -33,6 +33,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	{
 		case ADD_RESISTOR:
 			pAct= new ActionAddRes(this);
+			break;
+		case Add_Bulb:
+			pAct = new ActionAddBulb(this);
 			break;
 
 		case ADD_CONNECTION:
