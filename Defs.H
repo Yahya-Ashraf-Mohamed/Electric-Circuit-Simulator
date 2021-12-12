@@ -13,8 +13,6 @@ enum ActionType
 	Add_Ground,	    	//Add a Ground
 	Add_Buzzer,	    	//Add a Buzzer
 	Add_Fuse,			//Add a Fuse
-	Add_Wire,			//Add a Wire
-	Add_Lamp,			//Add a Lamp
 	ADD_CONNECTION,		//Add Wire Connection
 
 	ADD_Label,			//Add Label to a Component, a Connection
@@ -35,10 +33,14 @@ enum ActionType
 	DSN_MODE,	//Switch to Design mode
 	SIM_MODE,	//Switch to Simulatiom mode
 
+	Start_Simulation,  //start simulation
+	Stop_Simulation,   //Stop simulation
+
 	EXIT,		//Exit the application
 
-	STATUS_BAR,		//A click on the status bar
+	STATUS_BAR,	//A click on the status bar
 	DSN_TOOL,	//A click on an empty place in the design tool bar
+
 
 };
 

@@ -38,19 +38,24 @@ class UI
 	{
 		//Note: Items are ordered here as they appear in the menu
 		//If you want to change the menu items order, just change the order here
-		ITM_RES,				  //Resistor item in menu
+		ITM_RES,			     //Resistor item in menu
 		ITM_Battery,		     // Battery item in menu
-		ITM_Switch,		        // Switch item in menu 
-		ITM_Bulb,			   // Bulb item in menu
-		ITM_Ground,			  // Ground item in menu
-		ITM_Buzzer,			 // Buzzer item in menu 
-		ITM_Fuse,	        // Fuse item in menu
-		ITM_Wire,          // Wire item in menu
-		Design_Mood,      // Change mood From simulation mood to design mood
-		Simulation_Mood, // Change mood From design mood to simulation mood
-		ITM_EXIT,	    // Exit item
+		ITM_Switch,		         // Switch item in menu 
+		ITM_Bulb,				 // Bulb item in menu
+		ITM_Ground,		         // Ground item in menu
+		ITM_Buzzer,				 // Buzzer item in menu 
+		ITM_Fuse,			     // Fuse item in menu
+		ITM_ADD_CONNECTION,		 //Add Connection in menu
 
-		//TODO: Add more items names here
+		Group_ChangeSwitch_And_Save,
+		Group_Select_And_Load,
+		Group_Move_And_Undo,
+		Group_Lable_And_Redo,
+		Group_EditLable_And_Delete,
+
+		Change_Mode_Simulation,
+
+		ITM_EXIT_Design,	    // Exit item
 	
 		ITM_DSN_CNT		//no. of design menu items ==> This should be the last line in this enum
 	
@@ -60,10 +65,14 @@ class UI
 	enum SimMenuItem //The items of the simulation menu (you should add more items)
 	{
 		//Note: Items are ordered here as they appear in menu
-		ITM_CIRC_SIM,	//Circuit Simulate menu item
-	
-		//TODO:Add more items names here
-	
+		ITM_Start_SIM,	//Start Simulate item
+		ITM_Stop_SIM,   //Stop simulation
+		ChangeSwitch_ON_OFF,
+		Select,
+		Change_Mode_Design,
+
+		ITM_EXIT_Simulation,	    // Exit item
+
 		ITM_SIM_CNT		//no. of simulation menu items ==> This should be the last line in this enum
 	
 	};
@@ -72,7 +81,7 @@ class UI
 
 	MODE AppMode;		//Application Mode (design or simulation)
 	
-	static const int	width = 1200, height = 650,	//Window width and height
+	static const int	width = 1215, height = 630,	//Window width and height
 						wx = 15 , wy = 15,			//Window starting coordinates
 						StatusBarHeight = 50,	//Status Bar Height
 						ToolBarHeight = 80,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
