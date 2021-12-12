@@ -38,70 +38,66 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new ActionAddBulb(this);
 			break;
 		
-/*
 		case Add_Switch:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case Add_Battery:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case Add_Ground:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case Add_Buzzer:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case Add_Fuse:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case ADD_CONNECTION:
 			//TODO: Create AddConection Action here
-			pAct = new ActionAddRes(this);
-			break;
-		case Add_Lamp:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case ADD_Label:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case EDIT_Label:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case Change_Switch:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 //		case SELECT:
 	//		pAct = new ActionAddRes(this);
 		//	break;
 		case DEL:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case MOVE:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case SAVE:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case LOAD:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case UNDO:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case REDO:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case DSN_MODE:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 		case SIM_MODE:
-			pAct = new ActionAddRes(this);
+		//	pAct = new ActionAddRes(this);
 			break;
 
 		case EXIT:
 			///TODO: create ExitAction here
 			break;
-	*/
+	
 	}
 	if(pAct)
 	{

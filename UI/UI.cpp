@@ -366,52 +366,49 @@ void UI::Draw_Battery(const GraphicsInfo& r_GfxInfo, bool selected) const
 	pWind->DrawImage(Battery_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
-void UI::Draw_Open_Switch(const GraphicsInfo& r_GfxInfo, bool selected) const
+void UI::Draw_Switch(const GraphicsInfo& r_GfxInfo, bool selected, bool isOn) const
 {
-	string Open_Switch_Image;
-	if (selected)
-		Open_Switch_Image = "Images\\Comp\\Open_Switch_HI.jpg";	//use image of highlighted resistor
+	string Switch_Image;
+	if (isOn) 
+	{
+		if (selected)
+			Switch_Image = "Images\\Comp\\Open_Switch_HI.jpg";	//use image of highlighted resistor
+		else
+			Switch_Image = "Images\\Comp\\Open_Switch.jpg";	//use image of the normal resistor
+	}
 	else
-		Open_Switch_Image = "Images\\Comp\\Open_Switch.jpg";	//use image of the normal resistor
+	{
+		if (selected)
+			Switch_Image = "Images\\Comp\\Closed_Switch_HI.jpg";	//use image of highlighted resistor
+		else
+			Switch_Image = "Images\\Comp\\Closed_Switch.jpg";	//use image of the normal resistor
 
+	}
 	//Draw Battery at Gfx_Info (1st corner)
-	pWind->DrawImage(Open_Switch_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+	pWind->DrawImage(Switch_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
-void UI::Draw_Closed_Switch(const GraphicsInfo& r_GfxInfo, bool selected) const
+
+void UI::Draw_Bulb(const GraphicsInfo& r_GfxInfo, bool selected, bool isOn) const
 {
-	string Closed_Switch_Image;
-	if (selected)
-		Closed_Switch_Image = "Images\\Comp\\Closed_Switch_HI.jpg";	//use image of highlighted resistor
+	string Bulb_Image;
+	if (isOn) {
+		if (selected)
+			Bulb_Image = "Images\\Comp\\ON_Bulb_HI.jpg";	//use image of highlighted resistor
+		else
+			Bulb_Image = "Images\\Comp\\ON_Bulb.jpg";	//use image of the normal resistor
+	}
 	else
-		Closed_Switch_Image = "Images\\Comp\\Closed_Switch.jpg";	//use image of the normal resistor
+	{
+		if (selected)
+			Bulb_Image = "Images\\Comp\\Closed_Bulb_HI.jpg";	//use image of highlighted resistor
+		else
+			Bulb_Image = "Images\\Comp\\Closed_Bulb.jpg";	//use image of the normal resistor
+
+	}
 
 	//Draw Battery at Gfx_Info (1st corner)
-	pWind->DrawImage(Closed_Switch_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-}
-
-void UI::Draw_On_Bulb(const GraphicsInfo& r_GfxInfo, bool selected) const
-{
-	string On_Bulb_Image;
-	if (selected)
-		On_Bulb_Image = "Images\\Comp\\ON_Bulb_HI.jpg";	//use image of highlighted resistor
-	else
-		On_Bulb_Image = "Images\\Comp\\ON_Bulb.jpg";	//use image of the normal resistor
-
-	//Draw Battery at Gfx_Info (1st corner)
-	pWind->DrawImage(On_Bulb_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-}
-
-void UI::Draw_Off_Bulb(const GraphicsInfo& r_GfxInfo, bool selected) const
-{
-	string Off_Bulb_Image;
-	if (selected)
-		Off_Bulb_Image = "Images\\Comp\\Closed_Bulb_HI.jpg";	//use image of highlighted resistor
-	else
-		Off_Bulb_Image = "Images\\Comp\\Closed_Bulb.jpg";	//use image of the normal resistor
-
-	//Draw Battery at Gfx_Info (1st corner)
-	pWind->DrawImage(Off_Bulb_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+	pWind->DrawImage(Bulb_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
 void UI::Draw_Ground(const GraphicsInfo& r_GfxInfo, bool selected) const
@@ -450,6 +447,8 @@ void UI::Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected) const
 	pWind->DrawImage(Fuze_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
+
+/*
 void UI::Draw_Wire(const GraphicsInfo& r_GfxInfo, bool selected) const
 {
 	string Connection_Image;
@@ -461,13 +460,22 @@ void UI::Draw_Wire(const GraphicsInfo& r_GfxInfo, bool selected) const
 	//Draw Battery at Gfx_Info (1st corner)
 	pWind->DrawImage(Connection_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
-
+*/
 
 
 
 void UI::DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const
 {
+	/*
 	//TODO: Add code to draw connection
+	if (selected) {
+		pWind->SetPen(BLACK, 3);
+		pWind->DrawImage( r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+	}
+	else {
+
+	}
+*/
 }
 
 

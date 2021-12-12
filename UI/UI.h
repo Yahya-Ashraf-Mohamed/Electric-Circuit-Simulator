@@ -131,15 +131,11 @@ public:
 	// Draws a battery
 	void Draw_Battery(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
 
-	// Draws an opened Switch
-	void Draw_Open_Switch(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
-	// Draws an Closed Switch
-	void Draw_Closed_Switch(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+	// Draws a Switch
+	void Draw_Switch(const GraphicsInfo& r_GfxInfo, bool selected = false, bool isOn = false) const;
 
 	// Draws On Bulb
-	void Draw_On_Bulb(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
-	// Draws Off Bulb
-	void Draw_Off_Bulb(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+	void Draw_Bulb(const GraphicsInfo& r_GfxInfo, bool selected = false, bool isOn = false) const;
 
 	// Draws a Ground
 	void Draw_Ground(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
@@ -147,9 +143,11 @@ public:
 	void Draw_Buzzer(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
 	// Draws a Fuse
 	void Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+
+/*
 	// Draws a Wire
 	void Draw_Wire(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
-
+*/
 
 
 	// Draws Connection
