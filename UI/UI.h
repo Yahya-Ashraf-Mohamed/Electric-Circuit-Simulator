@@ -125,6 +125,7 @@ public:
 	void ClearStatusBar() const;		//Clears the status bar
 	void ClearDrawingArea() const;	//Clears the drawing area
 
+	bool Check_Valid()const;
 		
 	// Draws a resistor
 	void Draw_Resistor(const GraphicsInfo &r_GfxInfo, bool selected = false) const;
@@ -142,7 +143,7 @@ public:
 	// Draws a Buzzer
 	void Draw_Buzzer(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
 	// Draws a Fuse
-	void Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+	void Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected = false, bool isDameged = false) const;
 
 /*
 	// Draws a Wire

@@ -342,6 +342,20 @@ void UI::CreateSimulationToolBar()
 //								Components Drawing Functions							//
 //======================================================================================//
 
+bool UI::Check_Valid()const{
+	int x, y;
+	pWind->GetMouseClick(x, y);
+
+	if (y >= ToolBarHeight && y < height - StatusBarHeight)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 void UI::Draw_Resistor(const GraphicsInfo &r_GfxInfo, bool selected) const
 {
 	string ResImage;
@@ -404,7 +418,6 @@ void UI::Draw_Bulb(const GraphicsInfo& r_GfxInfo, bool selected, bool isOn) cons
 			Bulb_Image = "Images\\Comp\\Closed_Bulb_HI.jpg";	//use image of highlighted resistor
 		else
 			Bulb_Image = "Images\\Comp\\Closed_Bulb.jpg";	//use image of the normal resistor
-
 	}
 
 	//Draw Battery at Gfx_Info (1st corner)
@@ -435,13 +448,23 @@ void UI::Draw_Buzzer(const GraphicsInfo& r_GfxInfo, bool selected) const
 	pWind->DrawImage(Buzzer_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
-void UI::Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected) const
+void UI::Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected, bool isDameged) const
 {
 	string Fuze_Image;
-	if (selected)
-		Fuze_Image = "Images\\Comp\\Fuse_HI.jpg";	//use image of highlighted resistor
+	if (isDameged)
+	{
+		if (selected)
+			Fuze_Image = "Images\\Comp\\Dameged_Fuse_HI.jpg";	//use image of highlighted resistor
+		else
+			Fuze_Image = "Images\\Comp\\Dameged_Fuse.jpg";	//use image of the normal resistor
+	}
 	else
-		Fuze_Image = "Images\\Comp\\Fuse.jpg";	//use image of the normal resistor
+	{
+		if (selected)
+			Fuze_Image = "Images\\Comp\\Fuse_HI.jpg";	//use image of highlighted resistor
+		else
+			Fuze_Image = "Images\\Comp\\Fuse.jpg";	//use image of the normal resistor	
+	}
 
 	//Draw Battery at Gfx_Info (1st corner)
 	pWind->DrawImage(Fuze_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
