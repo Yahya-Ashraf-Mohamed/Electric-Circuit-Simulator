@@ -25,6 +25,18 @@ ActionType ApplicationManager::GetUserAction()
 	return pUI->GetUserAction(); 	
 }
 ////////////////////////////////////////////////////////////////////
+/*
+Component* ApplicationManager::GetCompList() 
+{
+	return *CompList;
+}
+
+int ApplicationManager::GetCompCount() 
+{
+	return CompCount;
+}
+*/
+////////////////////////////////////////////////////////////////////
 
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {

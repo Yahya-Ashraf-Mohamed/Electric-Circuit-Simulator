@@ -359,7 +359,7 @@ void UI::CreateSimulationToolBar()
 // to be corrected soon
 bool UI::Check_Valid(int x, int y)const{
 
-	if (y > ToolBarHeight + (getCompHeight()/2) + 2 && y < height - (StatusBarHeight + (getCompHeight() / 2)) + 2 && x >= (getCompWidth()/2) + 2 && x < width - (getCompWidth() / 2) + 2)   
+	if (y > ToolBarHeight + (getCompHeight()/2) + 1 && y < height - (StatusBarHeight + (getCompHeight() / 2)) + 1 && x > (getCompWidth()/2) + 1 && x < width - (getCompWidth() / 2) + 1)   
 	{
 		return true;
 	}
@@ -496,12 +496,14 @@ void UI::DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const
 	//TODO: Add code to draw connection
 	if (selected) {
 		pWind->SetPen(BLACK, 3);
-		pWind->DrawImage( r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+		
 	}
 	else {
 
 	}
 */
+	//pWind->SetPen(BLACK, 3);
+	//pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y, FILLED);
 }
 
 

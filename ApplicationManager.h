@@ -36,6 +36,9 @@ public:
 	//Gets a pointer to UI Object
 	UI* GetUI();
 	
+	//Gets componnent list
+	Component* GetCompList();
+	int GetCompCount();
 
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
