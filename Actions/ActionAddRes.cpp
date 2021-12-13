@@ -21,8 +21,12 @@ void ActionAddRes::Execute()
 	//Get Center point of the area where the Comp should be drawn
 	pUI->GetPointClicked(Cx, Cy);
 
+	if (pUI->Check_Valid(Cx, Cy) == true) 
+	{
+
 	//Clear Status Bar
-	pUI->ClearStatusBar();	
+	pUI->ClearStatusBar();
+
 	
 	
 	GraphicsInfo * pGInfo= new GraphicsInfo(2); //Gfx info to be used to construct the Comp
@@ -38,6 +42,12 @@ void ActionAddRes::Execute()
 	 
 	Resistor* pR = new Resistor(pGInfo);
 	pManager->AddComponent(pR);
+
+	}
+	else {
+			pUI->PrintMsg("Unable to draw here!");
+	}
+
 }
 
 void ActionAddRes::Undo()

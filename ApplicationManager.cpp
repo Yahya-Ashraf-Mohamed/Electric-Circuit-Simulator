@@ -108,10 +108,23 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 }
 ////////////////////////////////////////////////////////////////////
 
+//Function updates the user interface
 void ApplicationManager::UpdateInterface()
 {
-		for(int i=0; i<CompCount; i++)
+		for(int i=0; i<CompCount; i++) // Loop for drawing each component drowen in design area one by one
 			CompList[i]->Draw(pUI);
+
+		if (pUI->GetAppMode() == SIMULATION)
+		{
+			pUI->CreateSimulationToolBar();    // Updates the Simulation tool bar
+		}
+		else
+		{
+			pUI->CreateDesignToolBar();    // Updates the design tool bar
+		}
+		
+		pUI->CreateStatusBar();
+		
 
 }
 

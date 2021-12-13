@@ -9,8 +9,8 @@ Bulb::Bulb(GraphicsInfo* r_GfxInfo):Component(r_GfxInfo)
 
 void Bulb::Draw(UI* pUI)
 {
-	//Call output class and pass resistor drawing info to it.
-	pUI->Draw_Bulb(*m_pGfxInfo); //update to draw resistor
+	//Call output class and pass Bulb drawing info to it.
+	pUI->Draw_Bulb(*m_pGfxInfo,false,false); //update to draw resistor
 
 }
 

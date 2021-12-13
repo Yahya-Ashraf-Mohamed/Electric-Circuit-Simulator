@@ -241,7 +241,7 @@
     <ClInclude Include="Components\Edit.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="ActionAddBulb.h">
+    <ClInclude Include="Actions\ActionAddBulb.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

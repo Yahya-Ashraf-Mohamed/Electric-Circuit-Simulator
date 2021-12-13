@@ -5,15 +5,8 @@ Resistor::Resistor(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 
 void Resistor::Draw(UI* pUI)
 {
-	
-	if (pUI->Check_Valid() == true) {
-		//Call output class and pass resistor drawing info to it.
-		pUI->Draw_Resistor(*m_pGfxInfo); //update to draw resistor
-	}
-	else
-	{
-		pUI->PrintMsg("Unable to draw here!");
-	}
+	pUI->Draw_Resistor(*m_pGfxInfo,false); //update to draw resistor
+
 
 }
 

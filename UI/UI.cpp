@@ -15,7 +15,7 @@ UI::UI()
 	pWind = new window(width, height, wx, wy);	
 
 
-	ChangeTitle("Logic Simulator Project");
+	ChangeTitle("Electric Circuit Simulator");
 
 	CreateDesignToolBar();	//Create the desgin toolbar
 	CreateStatusBar();		//Create Status bar
@@ -30,6 +30,16 @@ int UI::getCompWidth() const
 int UI::getCompHeight() const
 {
 	return COMP_HEIGHT;
+}
+
+// Function get App mode Design or simulation
+MODE UI::GetAppMode()const 
+{
+	return AppMode;
+}
+
+void UI::GetClickLocation(int& x, int& y) {
+	pWind->GetMouseClick(x, y);
 }
 
 //======================================================================================//
@@ -83,7 +93,7 @@ ActionType UI::GetUserAction() const
 {	
 	int x,y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-
+//	ClearStatusBar();
 	if(AppMode == DESIGN )	//application is in design mode
 	{
 		//[1] If user clicks on the Toolbar
@@ -97,64 +107,64 @@ ActionType UI::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_RES:						return ADD_RESISTOR;
-			case ITM_Battery:					return Add_Battery;
-			case ITM_Switch:					return Add_Switch;
-			case ITM_Bulb:						return Add_Bulb;
-			case ITM_Ground:					return Add_Ground;
-			case ITM_Buzzer:					return Add_Buzzer;
-			case ITM_Fuse:						return Add_Fuse;
-			case ITM_ADD_CONNECTION:			return ADD_CONNECTION;
-			case Group_ChangeSwitch_And_Save:
-				if (y < ToolBarHeight / 2) {
-					return Change_Switch;
+			case ITM_RES:						return ADD_RESISTOR;	//Item Resistor is clicked
+			case ITM_Battery:					return Add_Battery;		//Item Battery is clicked
+			case ITM_Switch:					return Add_Switch;		//Item Switch is clicked
+			case ITM_Bulb:						return Add_Bulb;		//Item Bulb is clicked
+			case ITM_Ground:					return Add_Ground;		//Item Ground is clicked
+			case ITM_Buzzer:					return Add_Buzzer;		//Item Buzzer is clicked
+			case ITM_Fuse:						return Add_Fuse;		//Item Fuse is clicked
+			case ITM_ADD_CONNECTION:			return ADD_CONNECTION;	//Item Connection is clicked
+			case Group_ChangeSwitch_And_Save:							
+				if (y < ToolBarHeight / 2) {							//user clicked on the upper part of the image
+					return Change_Switch;								//Item Change switch is clicked
 				}
 				else
 				{
-					return SAVE;
+					return SAVE;										//Item Save is clicked
 				}
 
 			case Group_Select_And_Load:
-				if (y < ToolBarHeight / 2) {
-					return SELECT;
+				if (y < ToolBarHeight / 2) {							//user clicked on the upper part of the image
+					return SELECT;										//Item Select is clicked
 				}
 				else
 				{
-					return LOAD;
+					return LOAD;										//Item Load is clicked
 				}
 
 			case Group_Move_And_Undo:
-				if (y < ToolBarHeight / 2) {
-					return MOVE;
+				if (y < ToolBarHeight / 2) {							//user clicked on the upper part of the image
+					return MOVE;										//Item Move is clicked
 				}
 				else
 				{
-					return UNDO;
+					return UNDO;										//Item undo is clicked
 				}
 
 			case Group_Lable_And_Redo:
-				if (y < ToolBarHeight / 2) {
-					return ADD_Label;
+				if (y < ToolBarHeight / 2) {							//user clicked on the upper part of the image
+					return ADD_Label;									//Item Add Lable is clicked
 				}
 				else
 				{
-					return REDO;
+					return REDO;										//Item Redo is clicked
 				}
 
 			case Group_EditLable_And_Delete:
-				if (y < ToolBarHeight / 2) {
-					return EDIT_Label;
+				if (y < ToolBarHeight / 2) {							//user clicked on the upper part of the image
+					return EDIT_Label;									//Item Edit Lable is clicked
 				}
 				else
 				{
-					return DEL;
+					return DEL;											//Item Delete is clicked
 				}
 				
-			case Change_Mode_Simulation:		return SIM_MODE;
+			case Change_Mode_Simulation:		return SIM_MODE;		//change app mode to simulation mode
 				
-			case ITM_EXIT_Design:				return EXIT;
+			case ITM_EXIT_Design:				return EXIT;			//Exit the appliction
 
-			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
+			default: return DSN_TOOL;									//A click on empty place in desgin toolbar
 			}
 		}
 	
@@ -180,14 +190,14 @@ ActionType UI::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_Start_SIM:			return Start_Simulation;
-			case ITM_Stop_SIM:			return Stop_Simulation;
-			case ChangeSwitch_ON_OFF:	return Change_Switch;
-			case Select:				return SELECT;
-			case Change_Mode_Design:	return DSN_MODE;
-			case ITM_EXIT_Design:		return EXIT;
+			case ITM_Start_SIM:			return Start_Simulation; //Item Start simulation
+			case ITM_Stop_SIM:			return Stop_Simulation;	 //Item Stop simulation
+			case ChangeSwitch_ON_OFF:	return Change_Switch;	 //Item Change switch state
+			case Select:				return SELECT;			 //Item Select is clicked
+			case Change_Mode_Design:	return DSN_MODE;		 //change app mode to Design mode
+			case ITM_EXIT_Design:		return EXIT;			 //Exit the application
 
-			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
+			default: return DSN_TOOL;							 //A click on empty place in desgin toolbar
 			}
 		}
 
@@ -221,6 +231,7 @@ void UI::CreateStatusBar() const
 	pWind->DrawLine(0, height-StatusBarHeight, width, height-StatusBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////
+//Print the string in the status bar
 void UI::PrintMsg(string msg) const
 {
 	ClearStatusBar();	//Clear Status bar to print message on it
@@ -234,6 +245,7 @@ void UI::PrintMsg(string msg) const
 	pWind->DrawString(MsgX, height - MsgY, msg);
 }
 //////////////////////////////////////////////////////////////////////////////////
+//Clears the status bar
 void UI::ClearStatusBar()const
 {
 	// Set the Message offset from the Status Bar
@@ -249,12 +261,14 @@ void UI::ClearStatusBar()const
 //Clears the drawing (degin) area
 void UI::ClearDrawingArea() const
 {
+	//Overwrite using bachground color to erase the message
 	pWind->SetPen(BLACK, 1);
 	pWind->SetBrush(WHITE);
 	pWind->DrawRectangle(0, ToolBarHeight, width, height - StatusBarHeight);
 	
 }
 //////////////////////////////////////////////////////////////////////////////////////////
+
 //Draws the menu (toolbar) in the Design mode
 void UI::CreateDesignToolBar() 
 {
@@ -277,8 +291,6 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[Group_EditLable_And_Delete] = "images\\Menu\\Edit_Lable&delete.jpg";
 	MenuItemImages[Change_Mode_Simulation] = "images\\Menu\\Menu_simulation.jpg";
 
-//	MenuItemImages[Simulation_Mood] = "images\\Menu\\Menu_simulation.jpg";
-//	MenuItemImages[ITM_Change_Switch] = "images\\Menu\\Menu_Resistor_image.jpg";
 	MenuItemImages[ITM_EXIT_Design] = "images\\Menu\\Menu_Exit.jpg";
 
 
@@ -295,19 +307,20 @@ void UI::CreateDesignToolBar()
 	pWind->DrawLine(1370, 0, 1370, ToolBarHeight);
 	
 	pWind->SetBrush(BLACK);
-//	pWind->DrawRectangle(640, 0, 720, ToolBarHeight); // draw black rectangle to hide simulation tool icon
 
+	//Loop to draw the separation lines between the componnents in Design tool bar
 	for (int position = 0; position < 1420; position=position+80) {
 		pWind->DrawLine(position, 0, position, ToolBarHeight);
 	};
 }
+
 //////////////////////////////////////////////////////////////////////////////////////////
 //Draws the menu (toolbar) in the simulation mode
 void UI::CreateSimulationToolBar()
 {
 	AppMode = SIMULATION;	//Simulation Mode
 
-		//List of images for each menu item
+	//List of images for each menu item
 	string MenuItemImages[ITM_SIM_CNT];
 	MenuItemImages[ITM_Start_SIM] = "images\\Menu\\Start.jpg";
 	MenuItemImages[ITM_Stop_SIM] = "images\\Menu\\End.jpg";
@@ -331,8 +344,8 @@ void UI::CreateSimulationToolBar()
 	pWind->DrawLine(1370, 0, 1370, ToolBarHeight);
 
 	pWind->SetBrush(BLACK);
-	//	pWind->DrawRectangle(640, 0, 720, ToolBarHeight); // draw black rectangle to hide simulation tool icon
 
+	//Loop to draw the separation lines between the componnents in Simulation tool bar
 	for (int position = 0; position < 560; position = position + 80) {
 		pWind->DrawLine(position, 0, position, ToolBarHeight);
 	};
@@ -342,11 +355,11 @@ void UI::CreateSimulationToolBar()
 //								Components Drawing Functions							//
 //======================================================================================//
 
-bool UI::Check_Valid()const{
-	int x, y;
-	pWind->GetMouseClick(x, y);
+// This Function prevent the user to draw any where exept in Design area
+// to be corrected soon
+bool UI::Check_Valid(int x, int y)const{
 
-	if (y >= ToolBarHeight && y < height - StatusBarHeight)
+	if (y > ToolBarHeight + (getCompHeight()/2) + 2 && y < height - (StatusBarHeight + (getCompHeight() / 2)) + 2 && x >= (getCompWidth()/2) + 2 && x < width - (getCompWidth() / 2) + 2)   
 	{
 		return true;
 	}
@@ -356,6 +369,7 @@ bool UI::Check_Valid()const{
 	}
 }
 
+// Draws a resistor function
 void UI::Draw_Resistor(const GraphicsInfo &r_GfxInfo, bool selected) const
 {
 	string ResImage;
@@ -368,6 +382,7 @@ void UI::Draw_Resistor(const GraphicsInfo &r_GfxInfo, bool selected) const
 	pWind->DrawImage(ResImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
+// Draws a battery function
 void UI::Draw_Battery(const GraphicsInfo& r_GfxInfo, bool selected) const
 {
 	string Battery_Image;
@@ -380,6 +395,7 @@ void UI::Draw_Battery(const GraphicsInfo& r_GfxInfo, bool selected) const
 	pWind->DrawImage(Battery_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
+// Draws a Switch function
 void UI::Draw_Switch(const GraphicsInfo& r_GfxInfo, bool selected, bool isOn) const
 {
 	string Switch_Image;
@@ -402,7 +418,7 @@ void UI::Draw_Switch(const GraphicsInfo& r_GfxInfo, bool selected, bool isOn) co
 	pWind->DrawImage(Switch_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
-
+// Draws On Bulb function
 void UI::Draw_Bulb(const GraphicsInfo& r_GfxInfo, bool selected, bool isOn) const
 {
 	string Bulb_Image;
@@ -424,6 +440,7 @@ void UI::Draw_Bulb(const GraphicsInfo& r_GfxInfo, bool selected, bool isOn) cons
 	pWind->DrawImage(Bulb_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
+// Draws a Ground function
 void UI::Draw_Ground(const GraphicsInfo& r_GfxInfo, bool selected) const
 {
 	string Ground_Image;
@@ -436,6 +453,7 @@ void UI::Draw_Ground(const GraphicsInfo& r_GfxInfo, bool selected) const
 	pWind->DrawImage(Ground_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
+// Draws a Buzzer function
 void UI::Draw_Buzzer(const GraphicsInfo& r_GfxInfo, bool selected) const
 {
 	string Buzzer_Image;
@@ -448,6 +466,7 @@ void UI::Draw_Buzzer(const GraphicsInfo& r_GfxInfo, bool selected) const
 	pWind->DrawImage(Buzzer_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
+// Draws a Fuse function
 void UI::Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected, bool isDameged) const
 {
 	string Fuze_Image;
@@ -470,23 +489,7 @@ void UI::Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected, bool isDameged)
 	pWind->DrawImage(Fuze_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
-
-/*
-void UI::Draw_Wire(const GraphicsInfo& r_GfxInfo, bool selected) const
-{
-	string Connection_Image;
-	if (selected)
-		Connection_Image = "Images\\Comp\\Wire_HI.jpg";	//use image of highlighted resistor
-	else
-		Connection_Image = "Images\\Comp\\Wire.jpg";	//use image of the normal resistor
-
-	//Draw Battery at Gfx_Info (1st corner)
-	pWind->DrawImage(Connection_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-}
-*/
-
-
-
+// Draws Connection function   // to be completed soon
 void UI::DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const
 {
 	/*
