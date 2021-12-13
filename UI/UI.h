@@ -111,12 +111,12 @@ public:
 	MODE GetAppMode()const;     //returns App Mode state
 	
 	// Input Functions  ---------------------------
-	void GetPointClicked(int &, int &);	//Get coordinate where user clicks
-	string GetSrting();					//Returns a string entered by the user
+	void GetPointClicked(int &, int &);		//Get coordinate where user clicks
+	string GetSrting();						//Returns a string entered by the user
 
-	ActionType GetUserAction() const;	//Reads the user click and maps it to an action
+	ActionType GetUserAction() const;		//Reads the user click and maps it to an action
 	
-	void GetClickLocation(int& x, int& y);
+	void GetClickLocation(int& x, int& y);  //Reads the location where the user clicked
 	
 	// Output Functions  ---------------------------
 	void ChangeTitle(string Title) const; //Change the title of the application
@@ -128,8 +128,11 @@ public:
 	void ClearStatusBar() const;	      //Clears the status bar
 	void ClearDrawingArea() const;		  //Clears the drawing area
 
-	bool Check_Valid(int x,int y)const;	  // This Function prevent the user to draw any where exept in Design area // to be corrected soon
-		
+	bool Check_Valid(int x,int y)const;	  // This Function prevent the user to draw any where exept in Design area
+	
+	// To do : Function check if the place where user clicked in the design area empty to draw the componnent or not
+	// To do : Function check if the place where the two component will be connected in the design area empty to draw the conection or not
+
 	// Draws a resistor function
 	void Draw_Resistor(const GraphicsInfo &r_GfxInfo, bool selected) const;
 	// Draws a battery function

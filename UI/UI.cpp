@@ -93,7 +93,7 @@ ActionType UI::GetUserAction() const
 {	
 	int x,y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-//	ClearStatusBar();
+
 	if(AppMode == DESIGN )	//application is in design mode
 	{
 		//[1] If user clicks on the Toolbar
@@ -220,11 +220,13 @@ ActionType UI::GetUserAction() const
 //======================================================================================//
 
 //////////////////////////////////////////////////////////////////////////////////
+//Changes the title of the application
 void UI::ChangeTitle(string Title) const
 {
 	pWind->ChangeTitle(Title);
 }
 //////////////////////////////////////////////////////////////////////////////////
+//Create the status bar
 void UI::CreateStatusBar() const
 {
 	pWind->SetPen(BLACK,3);
@@ -356,7 +358,6 @@ void UI::CreateSimulationToolBar()
 //======================================================================================//
 
 // This Function prevent the user to draw any where exept in Design area
-// to be corrected soon
 bool UI::Check_Valid(int x, int y)const{
 
 	if (y > ToolBarHeight + (getCompHeight()/2) + 1 && y < height - (StatusBarHeight + (getCompHeight() / 2)) + 1 && x > (getCompWidth()/2) + 1 && x < width - (getCompWidth() / 2) + 1)   
@@ -368,6 +369,10 @@ bool UI::Check_Valid(int x, int y)const{
 		return false;
 	}
 }
+
+// To do : Function check if the place where user clicked in the design area empty to draw the componnent or not
+// To do : Function check if the place where the two component will be connected in the design area empty to draw the conection or not
+
 
 // Draws a resistor function
 void UI::Draw_Resistor(const GraphicsInfo &r_GfxInfo, bool selected) const
