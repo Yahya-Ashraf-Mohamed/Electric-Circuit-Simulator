@@ -1,4 +1,5 @@
 #include "UI.h"
+#include <math.h>
 
 UI::UI()
 {
@@ -495,19 +496,155 @@ void UI::Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected, bool isDameged)
 }
 
 // Draws Connection function   // to be completed soon
-void UI::DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const
+void UI::DrawConnection(const GraphicsInfo& Comp1_GfxInfo, const GraphicsInfo& Comp2_GfxInfo, bool selected) const
 {
-	/*
-	//TODO: Add code to draw connection
+	//Get the first component top left corner
+	int COMP_1_X1 = Comp1_GfxInfo.PointsList[0].x;
+	int COMP_1_Y1 = Comp1_GfxInfo.PointsList[0].y;
+	//Get the first component bottom right corner	
+	int COMP_1_X2 = Comp1_GfxInfo.PointsList[1].x;
+	int COMP_1_Y2 = Comp1_GfxInfo.PointsList[1].y;
+	
+	//Get center points of the first componnent
+	int COMP_1_Cx = COMP_1_X1 + (abs((COMP_1_X2 - COMP_1_X1)/2));
+	int COMP_1_Cy = COMP_1_Y1 + (abs((COMP_1_Y2 - COMP_1_Y1) / 2));
+
+
+	//Get the Second component top left corner
+	int COMP_2_X1 = Comp2_GfxInfo.PointsList[0].x;
+	int COMP_2_Y1 = Comp2_GfxInfo.PointsList[0].y;
+	//Get the second component bottom right corner
+	int COMP_2_X2 = Comp2_GfxInfo.PointsList[1].x;
+	int COMP_2_Y2 = Comp2_GfxInfo.PointsList[1].y;
+
+	//Get center points of the Second componnent
+	int COMP_2_Cx = COMP_2_X1 + (abs((COMP_2_X2 - COMP_2_X1) / 2));
+	int COMP_2_Cy = COMP_2_Y1 + (abs((COMP_2_Y2 - COMP_2_Y1) / 2));
+
+	
+	//code to draw connection
 	if (selected) {
-		pWind->SetPen(BLACK, 3);
+		pWind->SetPen(BLACK, 1);
+
+		//Case 1.1 two components are in the same level Y_axis && Component 1 is on the right side and Component 2 is on the left side
+		if (COMP_1_Cx > COMP_2_Cx && COMP_1_Cy == COMP_2_Cy) {
+			pWind->DrawLine(COMP_1_X1, (COMP_1_Y1 + (COMP_1_Cy - COMP_1_Y1)), COMP_2_X2, (COMP_2_Y2 - (COMP_2_Y2 - COMP_2_Cy)), FILLED); 
+		}
+		//Case 1.2 two components are in the same level Y_axis && Component 2 is on the right side and Component 1 is on the left side
+		else if(COMP_1_Cx < COMP_2_Cx && COMP_1_Cy == COMP_2_Cy)
+		{
+			pWind->DrawLine(COMP_1_X2, (COMP_1_Y2 - (COMP_1_Y2 - COMP_1_Cy)), COMP_2_X1, (COMP_2_Y1 + (COMP_2_Cy - COMP_2_Y1)), FILLED);
+		}
+		//Case 2.1 two components are on the same level X_axis && Component 1 is on the top and Component 2 is in the bottom
+		else if (COMP_1_Cy < COMP_2_Cy && COMP_1_Cx == COMP_2_Cx)
+		{
+			pWind->DrawLine(COMP_1_X2, (COMP_1_Y2 - (COMP_1_Y2 - COMP_1_Cy)), COMP_1_X2 + 3, (COMP_1_Y2 - (COMP_1_Y2 - COMP_1_Cy)), FILLED);
+			pWind->DrawLine(COMP_1_X2 + 3, (COMP_1_Y2 - (COMP_1_Y2 - COMP_1_Cy)), COMP_1_X2 + 3, (COMP_1_Y2 - (COMP_1_Y2 - COMP_1_Cy)) + ((COMP_1_Cy + COMP_2_Cy)/2), FILLED);
+			pWind->DrawLine(((COMP_1_X2 + 3) - ((COMP_1_X2 + 3) - (COMP_2_X1 - 3))), (COMP_1_Y2 - (COMP_1_Y2 - COMP_1_Cy)) + ((COMP_1_Cy + COMP_2_Cy) / 2), COMP_1_X2 + 3, (COMP_1_Y2 - (COMP_1_Y2 - COMP_1_Cy)) + ((COMP_1_Cy + COMP_2_Cy) / 2), FILLED);
+			pWind->DrawLine(((COMP_1_X2 + 3) - ((COMP_1_X2 + 3) - (COMP_2_X1 - 3))), (COMP_1_Y2 - (COMP_1_Y2 - COMP_1_Cy)) + ((COMP_1_Cy + COMP_2_Cy) / 2), ((COMP_1_X2 + 3) - ((COMP_1_X2 + 3) - (COMP_2_X1 - 3))), ((COMP_1_Y2 - (COMP_1_Y2 - COMP_1_Cy)) + ((COMP_1_Cy + COMP_2_Cy) / 2)) + (COMP_2_Cy - ((COMP_1_Y2 - (COMP_1_Y2 - COMP_1_Cy)) + ((COMP_1_Cy + COMP_2_Cy) / 2))), FILLED);
+			pWind->DrawLine(COMP_2_X1, (COMP_2_Y1 + (COMP_2_Cy - COMP_2_Y1)), COMP_2_X1 - 3, (COMP_2_Y1 + (COMP_2_Cy - COMP_2_Y1)), FILLED);
+		}
+		//Case 2.2 two components are on the same level X_axis && Component 2 is on the top and Component 1 is in the bottom
+		else if (COMP_1_Cy > COMP_2_Cy && COMP_1_Cx == COMP_2_Cx)
+		{
+			pWind->DrawLine(COMP_2_X2, (COMP_2_Y2 - (COMP_2_Y2 - COMP_2_Cy)), COMP_2_X2 + 3, (COMP_2_Y2 - (COMP_2_Y2 - COMP_2_Cy)), FILLED);
+			pWind->DrawLine(COMP_2_X2 + 3, (COMP_2_Y2 - (COMP_2_Y2 - COMP_2_Cy)), COMP_2_X2 + 3, (COMP_2_Y2 - (COMP_2_Y2 - COMP_2_Cy)) + ((COMP_2_Cy + COMP_1_Cy) / 2), FILLED);
+			pWind->DrawLine(((COMP_2_X2 + 3) - ((COMP_2_X2 + 3) - (COMP_1_X1 - 3))), (COMP_2_Y2 - (COMP_2_Y2 - COMP_2_Cy)) + ((COMP_2_Cy + COMP_1_Cy) / 2), COMP_2_X2 + 3, (COMP_2_Y2 - (COMP_2_Y2 - COMP_2_Cy)) + ((COMP_2_Cy + COMP_1_Cy) / 2), FILLED);
+			pWind->DrawLine(((COMP_2_X2 + 3) - ((COMP_2_X2 + 3) - (COMP_1_X1 - 3))), (COMP_2_Y2 - (COMP_2_Y2 - COMP_2_Cy)) + ((COMP_2_Cy + COMP_1_Cy) / 2), ((COMP_2_X2 + 3) - ((COMP_2_X2 + 3) - (COMP_1_X1 - 3))), ((COMP_2_Y2 - (COMP_2_Y2 - COMP_2_Cy)) + ((COMP_2_Cy + COMP_1_Cy) / 2)) + (COMP_1_Cy - ((COMP_2_Y2 - (COMP_2_Y2 - COMP_2_Cy)) + ((COMP_2_Cy + COMP_1_Cy) / 2))), FILLED);
+			pWind->DrawLine(COMP_1_X1, (COMP_1_Y1 + (COMP_1_Cy - COMP_1_Y1)), COMP_1_X1 - 3, (COMP_1_Y1 + (COMP_1_Cy - COMP_1_Y1)), FILLED);
+
+		}
+		//Case 3.1 two components are on different levels of X_axis and Y-axis && the distance between the two components are bigger than the distance between the two centers of the component && Component 1 is on the right while component 2 is on the left
+		else if ((COMP_1_Cx - COMP_2_Cx) > ((COMP_1_Cx - COMP_1_X1) + (COMP_2_X2 - COMP_2_Cx)))
+		{
+			//component 1 below component 2
+			if (COMP_1_Cy > COMP_2_Cy)
+			{
+				pWind->DrawLine(COMP_1_X1, COMP_1_Cy, (COMP_1_X1 - ((COMP_1_X1 - COMP_1_X2) / 2)), COMP_1_Cy, FILLED);
+				pWind->DrawLine((COMP_1_X1 - ((COMP_1_X1 - COMP_1_X2) / 2)), COMP_1_Cy, (COMP_1_X1 - ((COMP_1_X1 - COMP_1_X2) / 2)), COMP_2_Cy, FILLED);
+				pWind->DrawLine((COMP_1_X1 - ((COMP_1_X1 - COMP_1_X2) / 2)), COMP_2_Cy, COMP_2_X2, COMP_2_Cy, FILLED);
+
+			}
+			//component 2 below component 1
+			else
+			{
+				pWind->DrawLine(COMP_2_X1, COMP_2_Cy, (COMP_2_X1 - ((COMP_2_X1 - COMP_2_X2) / 2)), COMP_2_Cy, FILLED);
+				pWind->DrawLine((COMP_2_X1 - ((COMP_2_X1 - COMP_2_X2) / 2)), COMP_2_Cy, (COMP_2_X1 - ((COMP_2_X1 - COMP_2_X2) / 2)), COMP_1_Cy, FILLED);
+				pWind->DrawLine((COMP_2_X1 - ((COMP_2_X1 - COMP_2_X2) / 2)), COMP_1_Cy, COMP_1_X2, COMP_1_Cy, FILLED);
+
+			}
+		}
+		//Case 3.2 two components are on different levels of X_axis and Y-axis && the distance between the two components are bigger than the distance between the two centers of the component && Component 2 is on the right while component 1 is on the left
+		else if((COMP_2_Cx - COMP_1_Cx) > ((COMP_2_Cx - COMP_2_X1) + (COMP_1_X2 - COMP_1_Cx)))
+		{
+			//component 1 below component 2
+			if (COMP_1_Cy > COMP_2_Cy)
+			{
+				pWind->DrawLine(COMP_1_X2, COMP_1_Cy, (COMP_1_X2 + ((COMP_2_X1 - COMP_1_X2) / 2)), COMP_1_Cy, FILLED);
+				pWind->DrawLine((COMP_1_X2 + ((COMP_2_X1 - COMP_1_X2) / 2)), COMP_1_Cy, (COMP_1_X2 + ((COMP_2_X1 - COMP_1_X2) / 2)), COMP_2_Cy, FILLED);
+				pWind->DrawLine((COMP_1_X2 + ((COMP_2_X1 - COMP_1_X2) / 2)), COMP_2_Cy, COMP_2_X1, COMP_2_Cy, FILLED);
+			}
+			//component 2 below component 1
+			else
+			{
+				pWind->DrawLine(COMP_2_X2, COMP_2_Cy, (COMP_2_X2 + ((COMP_1_X1 - COMP_2_X2) / 2)), COMP_2_Cy, FILLED);
+				pWind->DrawLine((COMP_2_X2 + ((COMP_1_X1 - COMP_2_X2) / 2)), COMP_2_Cy, (COMP_2_X2 + ((COMP_1_X1 - COMP_2_X2) / 2)), COMP_1_Cy, FILLED);
+				pWind->DrawLine((COMP_2_X2 + ((COMP_1_X1 - COMP_2_X2) / 2)), COMP_1_Cy, COMP_1_X1, COMP_1_Cy, FILLED);
+			}
+		}
+		//Case 4.1 two components are on different levels of X_axis and Y-axis && the distance between the two components are smaller than the distance between the two centers of the component && Component 1 is on the right while component 2 is on the left
+		else if((COMP_1_Cx - COMP_2_Cx) < ((COMP_1_Cx - COMP_1_X1) + (COMP_2_X2 - COMP_2_Cx)))
+		{
+			//component 1 below component 2
+			if (COMP_1_Cy > COMP_2_Cy)
+			{
+				pWind->DrawLine(COMP_1_X1, COMP_1_Cy, COMP_1_X1 - 3, COMP_1_Cy, FILLED);
+				pWind->DrawLine(COMP_1_X1 - 3, COMP_1_Cy, COMP_1_X1 - 3, (COMP_1_Cy - ((COMP_1_Cy - COMP_2_Cy) / 2)), FILLED);
+				pWind->DrawLine(COMP_1_X1 - 3, (COMP_1_Cy - ((COMP_1_Cy - COMP_2_Cy) / 2)), COMP_2_X2 + 3, (COMP_1_Cy - ((COMP_1_Cy - COMP_2_Cy) / 2)), FILLED);
+				pWind->DrawLine(COMP_2_X2 + 3, (COMP_1_Cy - ((COMP_1_Cy - COMP_2_Cy) / 2)), COMP_2_X2 + 3, COMP_1_Cy, FILLED);
+				pWind->DrawLine(COMP_2_X2 + 3, COMP_2_Cy, COMP_2_X2, COMP_2_Cy, FILLED);
+			}
+			//component 2 below component 1
+			else
+			{
+				pWind->DrawLine(COMP_2_X2, COMP_2_Cy, COMP_2_X2 + 3, COMP_2_Cy, FILLED);
+				pWind->DrawLine(COMP_2_X2 + 3, COMP_2_Cy, COMP_2_X2 + 3, (COMP_2_Cy - ((COMP_2_Cy - COMP_1_Cy) / 2)), FILLED);
+				pWind->DrawLine(COMP_2_X2 + 3, (COMP_2_Cy - ((COMP_2_Cy - COMP_1_Cy) / 2)), COMP_1_X1 - 3, (COMP_2_Cy - ((COMP_2_Cy - COMP_1_Cy) / 2)), FILLED);
+				pWind->DrawLine(COMP_1_X1 - 3, (COMP_2_Cy - ((COMP_2_Cy - COMP_1_Cy) / 2)), COMP_1_X1 - 3, COMP_1_Cy, FILLED);
+				pWind->DrawLine(COMP_1_X1 - 3, COMP_1_Cy, COMP_1_X1, COMP_1_Cy, FILLED);
+
+			}
+		}
+		//Case 4.2 two components are on different levels of X_axis and Y-axis && the distance between the two components are smaller than the distance between the two centers of the component && Component 2 is on the right while component 1 is on the left
+		else if((COMP_2_Cx - COMP_1_Cx) < ((COMP_2_Cx - COMP_2_X1) + (COMP_1_X2 - COMP_1_Cx)))
+		{
+			//component 1 below component 2
+			if (COMP_1_Cy > COMP_2_Cy)
+			{
+				pWind->DrawLine(COMP_1_X2, COMP_1_Cy, COMP_1_X2 + 3, COMP_1_Cy, FILLED);
+				pWind->DrawLine(COMP_1_X2 + 3, COMP_1_Cy, COMP_1_X2 + 3, (COMP_1_Cy - ((COMP_1_Cy - COMP_2_Cy) / 2)), FILLED);
+				pWind->DrawLine(COMP_1_X2 + 3, (COMP_1_Cy - ((COMP_1_Cy - COMP_2_Cy) / 2)), COMP_2_X1 - 3, (COMP_1_Cy - ((COMP_1_Cy - COMP_2_Cy) / 2)), FILLED);
+				pWind->DrawLine(COMP_2_X1 - 3, (COMP_1_Cy - ((COMP_1_Cy - COMP_2_Cy) / 2)), COMP_2_X1 - 3, COMP_2_Cy, FILLED);
+				pWind->DrawLine(COMP_2_X1 - 3, COMP_2_Cy, COMP_2_X1, COMP_2_Cy, FILLED);
+
+			}
+			//component 2 below component 1
+			else
+			{
+				pWind->DrawLine(COMP_2_X1, COMP_2_Cy, COMP_2_X1 - 3, COMP_2_Cy, FILLED);
+				pWind->DrawLine(COMP_2_X1 - 3, COMP_2_Cy, COMP_2_X1 - 3, (COMP_2_Cy - ((COMP_2_Cy - COMP_1_Cy) / 2)), FILLED);
+				pWind->DrawLine(COMP_2_X1 - 3, (COMP_2_Cy - ((COMP_2_Cy - COMP_1_Cy) / 2)), COMP_1_X2 + 3, (COMP_2_Cy - ((COMP_2_Cy - COMP_1_Cy) / 2)), FILLED);
+				pWind->DrawLine(COMP_1_X2 + 3, (COMP_2_Cy - ((COMP_2_Cy - COMP_1_Cy) / 2)), COMP_1_X2 + 3, COMP_1_Cy, FILLED);
+				pWind->DrawLine(COMP_1_X2 + 3, COMP_1_Cy, COMP_1_X2, COMP_1_Cy, FILLED);
+			}
+		}
 		
 	}
 	else {
 
 	}
-*/
-	//pWind->SetPen(BLACK, 3);
+
+	
 	//pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y, FILLED);
 }
 

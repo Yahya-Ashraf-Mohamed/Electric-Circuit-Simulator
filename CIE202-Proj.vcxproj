@@ -188,6 +188,7 @@
     <ClInclude Include="Components\Edit.h" />
     <ClInclude Include="Components\Resistor.h" />
     <ClInclude Include="Defs.H" />
+    <ClInclude Include="Move.h" />
     <ClInclude Include="UI\UI.h" />
   </ItemGroup>
   <ItemGroup>

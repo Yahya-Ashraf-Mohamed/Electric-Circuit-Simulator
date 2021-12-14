@@ -244,6 +244,7 @@
     <ClInclude Include="Actions\ActionAddBulb.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Move.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMUgraphicsLib\Manual.txt">

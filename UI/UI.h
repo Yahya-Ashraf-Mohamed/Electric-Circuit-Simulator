@@ -153,7 +153,7 @@ public:
 
 
 	// Draws Connection function   // to be completed soon
-	void DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const;
+	void DrawConnection(const GraphicsInfo &Comp1_GfxInfo, const GraphicsInfo& Comp2_GfxInfo, bool selected) const;
 	
 
 	void PrintMsg(string msg) const;	//Print a message on Status bar
