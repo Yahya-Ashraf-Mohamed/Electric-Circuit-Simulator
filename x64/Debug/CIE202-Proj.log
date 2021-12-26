@@ -1,13 +1,1 @@
-﻿  ActionAddBulb.cpp
-  ActionAddRes.cpp
-  ApplicationManager.cpp
-  Bulb.cpp
-  Component.cpp
-  Connection.cpp
-  Edit.cpp
-  Resistor.cpp
-  UI.cpp
-  main.cpp
-  Generating Code...
-C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\UI\UI.cpp(215): warning C4715: 'UI::GetUserAction': not all control paths return a value
-  CIE202-Proj.vcxproj -> C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\x64\Debug\CIE202-Proj.exe
+﻿  CIE202-Proj.vcxproj -> C:\Users\dell\Desktop\Project_C++\Last UI update\x64\Debug\CIE202-Proj.exe

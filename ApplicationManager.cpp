@@ -1,6 +1,5 @@
 #include "ApplicationManager.h"
-#include "Actions\ActionAddRes.h"
-#include "Actions/ActionAddBulb.h"
+
 
 ApplicationManager::ApplicationManager()
 {
@@ -19,21 +18,46 @@ void ApplicationManager::AddComponent(Component* pComp)
 }
 ////////////////////////////////////////////////////////////////////
 
+void ApplicationManager::AddConnection(Connection* pConn)
+{
+	ConnList[ConnCount++] = pConn;
+}
+////////////////////////////////////////////////////////////////////
+
 ActionType ApplicationManager::GetUserAction()
 {
 	//Call input to get what action is reuired from the user
 	return pUI->GetUserAction(); 	
 }
 ////////////////////////////////////////////////////////////////////
-/*
-Component* ApplicationManager::GetCompList() 
+
+Component** ApplicationManager::GetCompList() 
 {
-	return *CompList;
+	return CompList;
 }
 
 int ApplicationManager::GetCompCount() 
 {
 	return CompCount;
+}
+
+
+Connection* ApplicationManager::GetConnList()
+{
+	return *ConnList;
+}
+
+int ApplicationManager::GetConnCount()
+{
+	return ConnCount;
+}
+
+/*
+Component* ApplicationManager::Get_Component_By_Coordinates(int x, int y) {
+
+	for (int i = 0; i < CompCount; i++) // Loop for 
+		CompList[i]->isInRegion(x,y)
+	return ;
 }
 */
 ////////////////////////////////////////////////////////////////////
@@ -76,17 +100,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		//	pAct = new ActionAddRes(this);
 			break;
 		case Change_Switch:
-		//	pAct = new ActionAddRes(this);
+//			pAct = new ActionAddRes(this);
 			break;
-//		case SELECT:
-	//		pAct = new ActionAddRes(this);
-		//	break;
+		case SELECT:
+			pAct = new Select(this);
+			break;
 		case DEL:
 		//	pAct = new ActionAddRes(this);
 			break;
-		case MOVE:
-		//	pAct = new ActionAddRes(this);
-			break;
+	//	case MOVE:
+	//		pAct = new ActionMove(this);
+	//		break;
 		case SAVE:
 		//	pAct = new ActionAddRes(this);
 			break;
@@ -125,6 +149,9 @@ void ApplicationManager::UpdateInterface()
 {
 		for(int i=0; i<CompCount; i++) // Loop for drawing each component drowen in design area one by one
 			CompList[i]->Draw(pUI);
+		for (int i = 0; i < ConnCount; i++) // Loop for drawing each component drowen in design area one by one
+			ConnList[i]->Draw(pUI);
+
 
 		if (pUI->GetAppMode() == SIMULATION)
 		{

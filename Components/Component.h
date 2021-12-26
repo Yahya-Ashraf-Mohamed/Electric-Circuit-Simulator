@@ -11,9 +11,13 @@ class Component
 {
 private:
 	string m_Label;
+
+	int X1, Y1, X2, Y2, Cx, Cy;
+
 protected:
 	//Each component has two ending terminals (term1, term2)
 	double term1_volt, term2_volt;	//voltage at terminals 1&2
+	bool isSelected = false;
 
 	//Each terminal is connected to set of connections
 	Connection *term1_connections[MAX_CONNS]; //list of pointers to connections
@@ -41,7 +45,12 @@ public:
 
 	//virtual void setInputPinStatus(int n, STATUS s)=0;	//set status of Inputpin # n, to be used by connection class.
 
+	bool isInRegion(int x, int y, UI* pUI); //Check if these points is in the component or not then draw the component selected
 	
+	void setSelect(bool isselect);
+
+	bool getSelect(); //return select true:false
+
 	Component();	
 	
 	//Destructor must be virtual

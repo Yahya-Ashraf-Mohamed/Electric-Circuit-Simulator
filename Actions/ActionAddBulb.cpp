@@ -22,23 +22,30 @@ void ActionAddBulb::Execute()
 	//Get Center point of the area where the Comp should be drawn
 	pUI->GetPointClicked(Cx, Cy);
 
-	//Clear Status Bar
-	pUI->ClearStatusBar();
+	if (pUI->Check_Valid(Cx, Cy) == true)
+	{
+
+		//Clear Status Bar
+		pUI->ClearStatusBar();
 
 
-	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
+		GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 
-	//Calculate the rectangle Corners
-	int compWidth = pUI->getCompWidth();
-	int compHeight = pUI->getCompHeight();
+		//Calculate the rectangle Corners
+		int compWidth = pUI->getCompWidth();
+		int compHeight = pUI->getCompHeight();
 
-	pGInfo->PointsList[0].x = Cx - compWidth / 2;
-	pGInfo->PointsList[0].y = Cy - compHeight / 2;
-	pGInfo->PointsList[1].x = Cx + compWidth / 2;
-	pGInfo->PointsList[1].y = Cy + compHeight / 2;
+		pGInfo->PointsList[0].x = Cx - compWidth / 2;
+		pGInfo->PointsList[0].y = Cy - compHeight / 2;
+		pGInfo->PointsList[1].x = Cx + compWidth / 2;
+		pGInfo->PointsList[1].y = Cy + compHeight / 2;
 
-	Bulb* pR = new Bulb(pGInfo);
-	pManager->AddComponent(pR);
+		Bulb* pR = new Bulb(pGInfo);
+		pManager->AddComponent(pR);
+	}
+	else {
+		pUI->PrintMsg("Unable to draw here!");
+	}
 }
 
 void ActionAddBulb::Undo()

@@ -5,7 +5,7 @@ Resistor::Resistor(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 
 void Resistor::Draw(UI* pUI)
 {
-	pUI->Draw_Resistor(*m_pGfxInfo,false); //update to draw resistor
+	pUI->Draw_Resistor(*m_pGfxInfo, isSelected); //update to draw resistor
 
 
 }

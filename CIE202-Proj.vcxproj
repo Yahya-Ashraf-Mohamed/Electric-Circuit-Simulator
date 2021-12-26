@@ -112,6 +112,8 @@
   <ItemGroup>
     <ClCompile Include="Actions\ActionAddBulb.cpp" />
     <ClCompile Include="Actions\ActionAddRes.cpp" />
+    <ClCompile Include="Actions\ActionMove.cpp" />
+    <ClCompile Include="Actions\Select.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -161,6 +163,8 @@
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddBulb.h" />
     <ClInclude Include="Actions\ActionAddRes.h" />
+    <ClInclude Include="Actions\ActionMove.h" />
+    <ClInclude Include="Actions\Select.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />

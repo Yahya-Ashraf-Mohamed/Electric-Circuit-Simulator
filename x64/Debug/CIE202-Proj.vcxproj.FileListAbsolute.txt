@@ -2,3 +2,4 @@ C:\Users\dell\Desktop\Project C++\Elec Circuit Code Framework\x64\Debug\CIE202-P
 C:\Users\dell\Desktop\Project_C++\Elec Circuit Code Framework\x64\Debug\CIE202-Proj.exe
 D:\Zewail collage material\Year 2\CIE 202\Project\Elec Circuit Code Framework\x64\Debug\CIE202-Proj.exe
 C:\Users\dell\Desktop\Project_C++\Backup\Elec Circuit Code Framework\x64\Debug\CIE202-Proj.exe
+C:\Users\dell\Desktop\Project_C++\Last UI update\x64\Debug\CIE202-Proj.exe

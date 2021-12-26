@@ -1,7 +1,6 @@
 #pragma once
 #include "Component.h"
-#include<string.h>
-using namespace std;
+#include "..//ApplicationManager.h"
 
 
 
@@ -10,6 +9,7 @@ class Bulb : public Component
 private:
 	double Internal_res;
 	bool isTurn;
+	int bulb_num = 0;
 public:
 	// constructors
 	Bulb();

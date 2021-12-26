@@ -2,7 +2,16 @@
 #include<iostream>
 
 using namespace std;
+/*
+//Battery::Battery(GraphicsInfo* r_GfxInfo) : Component(r_GfxInfo) //calling apointer to get the point in the Graphics information of the Battery//
+//{}
 
+void Battery::Draw(UI* pUI)
+{
+	//Call output class and pass Battery drawing info to it.//
+	//pUI->Draw_Battery(*m_pGfxInfo, true); //update to draw Battery
+
+}
 
 Battery::Battery() {
 	float power = 0;
@@ -40,3 +49,4 @@ void Battery::Max_Time(float newvalueoofthecurrent, float newvalueofthevoltage, 
 	cout << "the lamp can be lighten for:" << maximuumtime;
 }
 
+*/

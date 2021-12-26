@@ -1,5 +1,5 @@
 #include "ActionAddRes.h"
-#include "..\ApplicationManager.h"
+
 
 ActionAddRes::ActionAddRes(ApplicationManager *pApp):Action(pApp)
 {
@@ -21,11 +21,11 @@ void ActionAddRes::Execute()
 	//Get Center point of the area where the Comp should be drawn
 	pUI->GetPointClicked(Cx, Cy);
 
-	if (pUI->Check_Valid(Cx, Cy) == true) 
+	if (pUI->Check_Valid(Cx, Cy)) 
 	{
 
-	//Clear Status Bar
-	pUI->ClearStatusBar();
+		//Clear Status Bar	
+		pUI->ClearStatusBar();
 
 	
 	
