@@ -45,7 +45,7 @@ public:
 
 	//virtual void setInputPinStatus(int n, STATUS s)=0;	//set status of Inputpin # n, to be used by connection class.
 
-	bool isInRegion(int x, int y, UI* pUI); //Check if these points is in the component or not then draw the component selected
+	bool isInRegion(int x, int y); //Check if these points is in the component or not then draw the component selected
 	
 	void setSelect(bool isselect);
 

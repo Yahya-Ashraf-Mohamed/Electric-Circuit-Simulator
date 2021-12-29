@@ -7,7 +7,6 @@ void Resistor::Draw(UI* pUI)
 {
 	pUI->Draw_Resistor(*m_pGfxInfo, isSelected); //update to draw resistor
 
-
 }
 
 void Resistor::Operate(){}

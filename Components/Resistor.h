@@ -23,6 +23,7 @@ public:
 	double get_value_resistor();
 
 
+
 	virtual ~Resistor();
 
 

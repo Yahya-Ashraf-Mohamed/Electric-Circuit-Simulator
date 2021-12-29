@@ -51,7 +51,7 @@ class UI
 		ITM_ADD_CONNECTION,		 //Add Connection in menu
 
 		Group_ChangeSwitch_And_Save, // upper click Change Switch case on/off || Lower click save the circuit
-		Group_Select_And_Load,       // upper click select the componnent  || Lower click Load the saved circuit
+		Group_Module_And_Load,       // upper click select the componnent  || Lower click Load the saved circuit
 		Group_Move_And_Undo,         // Upper click Moves the combonnent || Lower click undo the last Action
 		Group_Lable_And_Redo,        // Upper click Lable the selected componnent || Lower click Resdo the last Action
 		Group_EditLable_And_Delete,  // Upper click Edit the lable of the selected combonnent || Lower click Delete the selected componnent
@@ -71,7 +71,7 @@ class UI
 		ITM_Start_SIM,			//Start Simulate item
 		ITM_Stop_SIM,			//Stop simulation
 		ChangeSwitch_ON_OFF,    //Change the switch state On/Off
-		Select,					//Select the clicked componnent 
+//		Select,					//Select the clicked componnent 
 		Change_Mode_Design,
 
 		ITM_EXIT_Simulation,	// Exit item
@@ -117,7 +117,8 @@ public:
 	ActionType GetUserAction() const;		//Reads the user click and maps it to an action
 	
 	void GetClickLocation(int& x, int& y);  //Reads the location where the user clicked
-	
+
+	window* GetpWind();
 	// Output Functions  ---------------------------
 	void ChangeTitle(string Title) const; //Change the title of the application
 

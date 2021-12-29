@@ -24,12 +24,12 @@ Component::Component()
 
 }
 
-bool Component::isInRegion(int x, int y, UI* pUI) 
+bool Component::isInRegion(int x, int y) //, UI* pUI)
 {
 
-	if (Cx >= X1 && Cx <= X2)  //to do 
+	if (x >= X1 && x <= X2)  //to do 
 	{
-		if (Cy >= Y1 && Cy <= Y2)
+		if (y >= Y1 && y <= Y2)
 			return true;
 		else
 			return false;

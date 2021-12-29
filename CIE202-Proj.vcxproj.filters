@@ -250,7 +250,6 @@
     <ClInclude Include="Actions\ActionAddBulb.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Move.h" />
     <ClInclude Include="Actions\ActionMove.h">
       <Filter>Actions</Filter>
     </ClInclude>

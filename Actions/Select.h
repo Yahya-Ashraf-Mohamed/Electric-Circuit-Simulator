@@ -13,44 +13,26 @@ private:
 
 	UI* pUI;
 
-	int Componentcount;
-	int ConnectionCount;
-//todo
-	Component** ComponentList;
-	Connection** ConnectionList;
+	//int Num_Selected_Comp = 0;
+
+	Component* selected_Component;
+
+	Connection* Selected_Connection;
 
 
 public:
 	Select(ApplicationManager* pApp); //Constructor
 	virtual ~Select(void); //Destructor
 
-	Component* Select_Component(int x, int y);
 
-	Connection* Select_Connection(int x, int y);
+	Connection* GetSelected_Connection();
 
-	void unselect();
+	Component* GetSelected_Component ();
 
-	//Execute action (code depends on action type)
-	virtual void Execute();
+	//Component** Select::All_Selected_Components();
 
-	virtual void Undo();
-	virtual void Redo();
-
-
-};
-
-
-/*#pragma once
-#include "..//Components/Component.h"
-#include "..//Actions/Action.h"
-#include "..\ApplicationManager.h"
-
-class Select : public Action
-{
-public:
-	Select(ApplicationManager* pApp);
-
-	virtual ~Select(void);
+	void unselect(int i);
+	void unselect_All();
 
 	//Execute action (code depends on action type)
 	virtual void Execute();
@@ -58,7 +40,4 @@ public:
 	virtual void Undo();
 	virtual void Redo();
 
-private:
-
 };
-*/

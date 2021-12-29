@@ -1,1 +1,12 @@
-﻿  CIE202-Proj.vcxproj -> C:\Users\dell\Desktop\Project_C++\Last UI update\x64\Debug\CIE202-Proj.exe
+﻿  ActionAddBulb.cpp
+  ActionAddRes.cpp
+  ActionMove.cpp
+  Select.cpp
+  ApplicationManager.cpp
+  Battery.cpp
+  Bulb.cpp
+  main.cpp
+  Generating Code...
+C:\Users\dell\Desktop\Project_C++\Last UI update\ApplicationManager.cpp(91): warning C4715: 'ApplicationManager::Get_Component_By_Coordinates': not all control paths return a value
+C:\Users\dell\Desktop\Project_C++\Last UI update\ApplicationManager.cpp(109): warning C4715: 'ApplicationManager::Get_Connection_By_Coordinates': not all control paths return a value
+  CIE202-Proj.vcxproj -> C:\Users\dell\Desktop\Project_C++\Last UI update\x64\Debug\CIE202-Proj.exe

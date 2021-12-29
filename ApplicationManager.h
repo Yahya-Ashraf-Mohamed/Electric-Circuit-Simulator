@@ -49,18 +49,20 @@ public:
 	Connection* GetConnList();
 	int GetConnCount();
 
-	//is in resion return a pointer 
-	//Component* Get_Component_By_Coordinates(int x, int y);
+	//Check if the coponent was selected once before
+	void UnSelectedComp();
+
+	//is in resion return a pointer
+	Component* Get_Component_By_Coordinates(int x, int y);
 
 	//is in resion return a pointer 
-	//Component* Get_Connection_By_Coordinates(int x, int y); // to do
+	Connection* Get_Connection_By_Coordinates(int x, int y); // to do
 
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 	
 	//Adds a new connection to the list of connections
 	void AddConnection(Connection* pConn);
-
 
 	//destructor
 	~ApplicationManager();

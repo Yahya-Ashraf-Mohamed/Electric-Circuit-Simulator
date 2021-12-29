@@ -43,6 +43,8 @@ void UI::GetClickLocation(int& x, int& y) {
 	pWind->GetMouseClick(x, y);
 }
 
+window* UI::GetpWind() { return pWind; }
+
 //======================================================================================//
 //								Input Functions 										//
 //======================================================================================//
@@ -125,9 +127,9 @@ ActionType UI::GetUserAction() const
 					return SAVE;										//Item Save is clicked
 				}
 
-			case Group_Select_And_Load:
+			case Group_Module_And_Load:
 				if (y < ToolBarHeight / 2) {							//user clicked on the upper part of the image
-					return SELECT;										//Item Select is clicked
+					return Add_Module_1;										//Item Select is clicked
 				}
 				else
 				{
@@ -194,7 +196,7 @@ ActionType UI::GetUserAction() const
 			case ITM_Start_SIM:			return Start_Simulation; //Item Start simulation
 			case ITM_Stop_SIM:			return Stop_Simulation;	 //Item Stop simulation
 			case ChangeSwitch_ON_OFF:	return Change_Switch;	 //Item Change switch state
-			case Select:				return SELECT;			 //Item Select is clicked
+//			case Select:				return SELECT;			 //Item Select is clicked
 			case Change_Mode_Design:	return DSN_MODE;		 //change app mode to Design mode
 			case ITM_EXIT_Design:		return EXIT;			 //Exit the application
 
@@ -288,7 +290,7 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_Fuse] = "images\\Menu\\Menu_Fuse.jpg";
 	MenuItemImages[ITM_ADD_CONNECTION] = "images\\Menu\\Menu_Wire.jpg";
 	MenuItemImages[Group_ChangeSwitch_And_Save] = "images\\Menu\\on_off_switch&Save.jpg";
-	MenuItemImages[Group_Select_And_Load] = "images\\Menu\\select&load.jpg";
+	MenuItemImages[Group_Module_And_Load] = "images\\Menu\\Module&load.jpg";
 	MenuItemImages[Group_Move_And_Undo] = "images\\Menu\\move&undo.jpg";
 	MenuItemImages[Group_Lable_And_Redo] = "images\\Menu\\Lable&redo.jpg";
 	MenuItemImages[Group_EditLable_And_Delete] = "images\\Menu\\Edit_Lable&delete.jpg";
@@ -328,7 +330,7 @@ void UI::CreateSimulationToolBar()
 	MenuItemImages[ITM_Start_SIM] = "images\\Menu\\Start.jpg";
 	MenuItemImages[ITM_Stop_SIM] = "images\\Menu\\End.jpg";
 	MenuItemImages[ChangeSwitch_ON_OFF] = "images\\Menu\\ON&OFF.jpg";
-	MenuItemImages[Select] = "images\\Menu\\select.jpg";
+//	MenuItemImages[Select] = "images\\Menu\\select.jpg";
 	MenuItemImages[Change_Mode_Design] = "images\\Menu\\Menu_Design.jpg";
 
 	MenuItemImages[ITM_EXIT_Simulation] = "images\\Menu\\Menu_Exit.jpg";

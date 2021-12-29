@@ -36,7 +36,7 @@ Component** ApplicationManager::GetCompList()
 	return CompList;
 }
 
-int ApplicationManager::GetCompCount() 
+int ApplicationManager::GetCompCount()
 {
 	return CompCount;
 }
@@ -52,14 +52,62 @@ int ApplicationManager::GetConnCount()
 	return ConnCount;
 }
 
-/*
+void ApplicationManager::UnSelectedComp()
+{
+	if (CompList != nullptr)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+			CompList[i]->setSelect(false);
+			CompList[i]->Draw(pUI);
+		}
+	}
+}
+
 Component* ApplicationManager::Get_Component_By_Coordinates(int x, int y) {
 
-	for (int i = 0; i < CompCount; i++) // Loop for 
-		CompList[i]->isInRegion(x,y)
-	return ;
+	if (CompList != nullptr)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+			if (CompList[i]->isInRegion(x, y))
+			{
+				if (CompList[i]->getSelect()==false)
+				{
+					CompList[i]->setSelect(true);
+					CompList[i]->Draw(pUI);
+					return CompList[i];
+				}
+				else
+				{
+					CompList[i]->setSelect(false);
+					CompList[i]->Draw(pUI);
+					return CompList[i];       // to be corrected soon
+				}
+			}
+		}
+		return nullptr;
+	}
 }
-*/
+
+
+Connection* ApplicationManager::Get_Connection_By_Coordinates(int x, int y) {
+
+	if (ConnList != nullptr)
+	{
+		for (int i = 0; i < ConnCount; i++)
+		{
+			if (ConnList[i]->isInRegion(x, y))
+			{
+				ConnList[i]->setSelect(true);
+				ConnList[i]->Draw(pUI);
+				return ConnList[i];
+			}
+		}
+		return nullptr;
+	}
+}
+
 ////////////////////////////////////////////////////////////////////
 
 void ApplicationManager::ExecuteAction(ActionType ActType)
@@ -92,6 +140,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_CONNECTION:
 			//TODO: Create AddConection Action here
 		//	pAct = new ActionAddRes(this);
+			break;
+		case Add_Module_1:
+			pAct = new ActionAddRes(this);
 			break;
 		case ADD_Label:
 		//	pAct = new ActionAddRes(this);
@@ -166,6 +217,10 @@ void ApplicationManager::UpdateInterface()
 		
 
 }
+
+////////////////////////////////////////////////////////////////////
+
+
 
 ////////////////////////////////////////////////////////////////////
 UI* ApplicationManager::GetUI()

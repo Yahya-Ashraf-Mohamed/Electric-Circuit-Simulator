@@ -22,9 +22,9 @@ void Connection::Draw(UI* pUI)
 	pUI->DrawConnection(*pGfxInfo, *pGfxInfo, false);//getSelect());
 }
 
-bool Connection::isInRegion(int x, int y, UI* pUI)
+bool Connection::isInRegion(int x, int y)
 {
-	if (Cx >= X1 && Cx <= X2)  //to do 
+	if (Cx >= X1 && Cx <= X2)
 	{
 		if (Cy >= Y1 && Cy <= Y2)
 			return true;
@@ -36,6 +36,6 @@ bool Connection::isInRegion(int x, int y, UI* pUI)
 }
  //Check if these points is in the component or not then draw the component selected
 
-void Connection::setSelect(bool isselected) { }//isSelected = isselected; }
+void Connection::setSelect(bool isselected) { isSelected = isselected; }//isSelected = isselected; }
 
 //bool Connection::getSelect() { return false; }
