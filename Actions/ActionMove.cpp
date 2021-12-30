@@ -3,9 +3,14 @@
 ActionMove::ActionMove(ApplicationManager* pApp) :Action(pApp)
 {
     pUI = pManager->GetUI(); //pointer to UI
+    pWind = pUI->GetpWind(); //pointer to window
 
     pUI->PrintMsg("Select the component you want to move");
 
+    //pSelect->Execute();
+
+    //MoveComp = pSelect->GetSelected_Component();
+    /*pAct->Execute();*/
     //Component* MoveComp = pSelect->GetSelected_Component();
 
 }
@@ -16,64 +21,56 @@ ActionMove::~ActionMove(void) {}
 
 void ActionMove::Execute()
 {
-    //pUI->GetPointClicked();     get selected coordinates send it to select and then get elected component then get its dimention then start to move 
+//get selected coordinates send it to select and then get elected component then get its dimention then start to move 
 
-   // Component* Selected_Comp = pSelect->GetSelected_Component(); //pointer to the selected compoent
+    pUI->ClearStatusBar();
 
-    this->Mouse_Drag(Window); // variable of type window 
+    pWind->SetBuffering(true);
+
+    bool isDragged = false;
+
+    int X = 0, Y = 0;
+
+    int X_Old = 0, Y_Old = 0;
+
+    GraphicsInfo* MoveCompInfo = MoveComp->get_Comp_Graphics_Info();
+
+    //to do points of the Component got from select  (pointer for the componenet)
+    int X1 = MoveCompInfo->PointsList[0].x;
+    int Y1 = MoveCompInfo->PointsList[0].y;
+    int height = pUI->getCompHeight();
+    int width = pUI->getCompWidth();
+
+    // Dragging Componenet
+    if (isDragged == false) {
+        if (pWind->GetButtonState(LEFT_BUTTON, X, Y) == BUTTON_DOWN) {
+            if (((X > X1) && (X < (X1 + width))) && ((Y > Y1) && (Y < (Y1 + height)))) {
+                isDragged = true;
+                X_Old = X; Y_Old = Y;
+            }
+        }
+    }
+    else {
+        if (pWind->GetButtonState(LEFT_BUTTON, X, Y) == BUTTON_UP) {
+            isDragged = false;
+        }
+        else {
+            if (X != X_Old) {
+                X1 = X1 + (X - X_Old);
+                X_Old = X;
+            }
+            if (Y != Y_Old) {
+                Y1 = Y1 + (Y - Y_Old);
+                Y_Old = Y;
+            }
+        }
+
+    }
+
+    pWind->UpdateBuffer();
 }
+
 
 void ActionMove::Redo(){}
 
 void ActionMove::Undo(){}
-
-void ActionMove::Mouse_Drag(window& testWindow)
-{
-    UI* pUI = pManager->GetUI();
-    pUI->ClearStatusBar();
-    
-
-    testWindow.SetBuffering(true);
-
-    bool bDragging = false;
-
-    int iX = 0, iY = 0;
-
-    int iXOld = 0;
-    int iYOld = 0;
-
-        
-    //to do points of the Component got from select  (pointer for the componenet)
-    int RectULX = 100;
-    int RectULY = 100;
-    int RectWidth = 20;
-
-
-// Dragging Componenet
-if (bDragging == false) {
-    if (testWindow.GetButtonState(LEFT_BUTTON, iX, iY) == BUTTON_DOWN) {
-        if (((iX > RectULX) && (iX < (RectULX + RectWidth))) && ((iY > RectULY) && (iY < (RectULY + RectWidth)))) {
-            bDragging = true;
-            iXOld = iX; iYOld = iY;
-        }
-    }
-}
-else {
-    if (testWindow.GetButtonState(LEFT_BUTTON, iX, iY) == BUTTON_UP) {
-        bDragging = false;
-    }
-    else {
-        if (iX != iXOld) {
-            RectULX = RectULX + (iX - iXOld);
-            iXOld = iX;
-        }
-        if (iY != iYOld) {
-            RectULY = RectULY + (iY - iYOld);
-            iYOld = iY;
-        }
-    }
-
-}
-
-testWindow.UpdateBuffer();
-}

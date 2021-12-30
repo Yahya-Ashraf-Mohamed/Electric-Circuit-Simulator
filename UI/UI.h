@@ -108,6 +108,9 @@ public:
 	UI();
 	int getCompWidth() const;	//returns Component width
 	int getCompHeight() const;	//returns Component height
+	int getToolBarHeight() const;
+	int getStatusBarHeight() const;
+	int	getWindowHeight() const;
 	MODE GetAppMode()const;     //returns App Mode state
 	
 	// Input Functions  ---------------------------

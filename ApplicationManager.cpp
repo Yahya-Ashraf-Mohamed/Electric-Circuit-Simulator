@@ -159,9 +159,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DEL:
 		//	pAct = new ActionAddRes(this);
 			break;
-	//	case MOVE:
-	//		pAct = new ActionMove(this);
-	//		break;
+		case MOVE:
+			pAct = new ActionMove(this);
+			break;
 		case SAVE:
 		//	pAct = new ActionAddRes(this);
 			break;

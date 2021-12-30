@@ -24,6 +24,7 @@ Component::Component()
 
 }
 
+
 bool Component::isInRegion(int x, int y) //, UI* pUI)
 {
 
@@ -47,6 +48,8 @@ bool Component::getSelect()
 {
 	return isSelected;
 }
+
+GraphicsInfo* Component::get_Comp_Graphics_Info() { return m_pGfxInfo; }
 
 Component::~Component()
 {}

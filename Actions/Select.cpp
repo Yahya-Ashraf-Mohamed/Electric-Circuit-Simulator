@@ -2,13 +2,22 @@
 
 Select::Select(ApplicationManager* pApp) :Action(pApp)
 {
+	pManager->GetUI()->ClearStatusBar();
 	pManager->GetUI()->PrintMsg("Click on the component to select");
 	pManager->GetUI()->GetPointClicked(Selected_X, Selected_y);
-	pManager->GetUI()->ClearStatusBar();
+	if (Selected_y < pUI->getWindowHeight() - pUI->getStatusBarHeight() && Selected_y > pUI->getToolBarHeight())
+		pManager->GetUI()->ClearStatusBar();
+	else
+	{
+		pManager->GetUI()->PrintMsg("Please Select the Component from design area only!");
+	}
+
 }
 
 Select::~Select(void)
 {
+	delete selected_Component;
+	selected_Component = nullptr;
 }
 
 void Select::Execute()
@@ -19,13 +28,6 @@ void Select::Execute()
 	{
 		this->unselect_All();
 	}
-	//else
-	//{ 
-	//	//if (pManager->isCompSelected(selected_Component) == false)
-	//		selected_Component->setSelect(true);
-	//		
-	//}
-
 }
 Component* Select::GetSelected_Component()
 
@@ -41,22 +43,8 @@ Connection* Select::GetSelected_Connection()
 void Select::unselect_All()
 {
 	pManager->UnSelectedComp();
-	//selected_Component->setSelect(false);
-
-	//delete selected_Component;
-	//selected_Component = nullptr;
-
-	//	for (int i = 0; i < Componentcount; i++)
-//		ComponentList[i]->setSelect(false);
-}
-
-void Select::unselect(int I)
-{
-	selected_Component->setSelect(false);
-
 	delete selected_Component;
 	selected_Component = nullptr;
-
 }
 
 void Select::Undo()

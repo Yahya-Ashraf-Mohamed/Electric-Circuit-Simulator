@@ -8,17 +8,15 @@ class ActionMove : public Action
 {
 private:
 	
-	UI* pUI;
-
-	window Window;
-	//Select* pSelect;
+	UI* pUI = nullptr;
+	window* pWind = nullptr;
+	//Action* pAct = new Select(this);
+	//Select* pSelect = nullptr;
+	Component* MoveComp;
 
 public:
 	ActionMove(ApplicationManager* pApp); //Constructor
 	virtual ~ActionMove(void); //Destructor
-
-
-	void Mouse_Drag(window& testWindow);
 
 	//Component* Get_Selected_Comp();
 	

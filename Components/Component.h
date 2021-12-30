@@ -51,6 +51,8 @@ public:
 
 	bool getSelect(); //return select true:false
 
+	GraphicsInfo* get_Comp_Graphics_Info();
+
 	Component();	
 	
 	//Destructor must be virtual

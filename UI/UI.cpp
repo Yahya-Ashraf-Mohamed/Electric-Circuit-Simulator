@@ -33,6 +33,21 @@ int UI::getCompHeight() const
 	return COMP_HEIGHT;
 }
 
+int UI::getToolBarHeight() const
+{
+	return ToolBarHeight;
+}
+
+int UI::getStatusBarHeight() const
+{
+	return StatusBarHeight;
+}
+
+int UI::getWindowHeight() const
+{
+	return height;
+}
+
 // Function get App mode Design or simulation
 MODE UI::GetAppMode()const 
 {

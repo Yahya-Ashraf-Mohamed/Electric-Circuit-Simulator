@@ -13,12 +13,11 @@ private:
 
 	UI* pUI;
 
-	//int Num_Selected_Comp = 0;
-
 	Component* selected_Component;
 
 	Connection* Selected_Connection;
 
+	//memoryleak
 
 public:
 	Select(ApplicationManager* pApp); //Constructor
@@ -29,9 +28,6 @@ public:
 
 	Component* GetSelected_Component ();
 
-	//Component** Select::All_Selected_Components();
-
-	void unselect(int i);
 	void unselect_All();
 
 	//Execute action (code depends on action type)
