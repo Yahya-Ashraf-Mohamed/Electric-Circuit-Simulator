@@ -22,6 +22,10 @@ void ActionAddBulb::Execute()
 	//Get Center point of the area where the Comp should be drawn
 	pUI->GetPointClicked(Cx, Cy);
 
+	// getting the resistance of the bulb 
+	pUI->PrintMsg("Enter the Internal Resistance of bulb: ");
+	internal_resistance = stod(pUI->GetSrting());
+
 	if (pUI->Check_Valid(Cx, Cy) == true)
 	{
 
@@ -40,12 +44,13 @@ void ActionAddBulb::Execute()
 		pGInfo->PointsList[1].x = Cx + compWidth / 2;
 		pGInfo->PointsList[1].y = Cy + compHeight / 2;
 
-		Bulb* pR = new Bulb(pGInfo);
+		Bulb* pR = new Bulb(pGInfo, internal_resistance);
 		pManager->AddComponent(pR);
 	}
 	else {
 		pUI->PrintMsg("Unable to draw here!");
 	}
+
 }
 
 void ActionAddBulb::Undo()
@@ -53,4 +58,5 @@ void ActionAddBulb::Undo()
 
 void ActionAddBulb::Redo()
 {}
+
 
