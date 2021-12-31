@@ -44,12 +44,32 @@ void Component::setSelect(bool isselected)
 	isSelected = isselected;
 }
 
+void Component::setX1(int Xold)
+{
+	X1 = Xold;
+}
+
+void Component::setY1(int Yold)
+{
+	Y1 = Yold;
+}
+
+int Component::getX1()
+{
+	return X1;
+}
+
+int Component::getY1()
+{
+	return Y1;
+}
+
 bool Component::getSelect()
 {
 	return isSelected;
 }
 
-GraphicsInfo* Component::get_Comp_Graphics_Info() { return m_pGfxInfo; }
+GraphicsInfo Component::get_Comp_Graphics_Info() { return *m_pGfxInfo; }
 
 Component::~Component()
 {}

@@ -58,6 +58,9 @@ public:
 	//is in resion return a pointer 
 	Connection* Get_Connection_By_Coordinates(int x, int y); // to do
 
+	//return the movable component
+	Component* Get_Moveable_Component_By_Coordinates(int x, int y);
+
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 	

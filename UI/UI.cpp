@@ -153,7 +153,7 @@ ActionType UI::GetUserAction() const
 
 			case Group_Move_And_Undo:
 				if (y < ToolBarHeight / 2) {							//user clicked on the upper part of the image
-	//				return MOVE;										//Item Move is clicked
+					return MOVE;										//Item Move is clicked
 				}
 				else
 				{

@@ -107,7 +107,24 @@ Connection* ApplicationManager::Get_Connection_By_Coordinates(int x, int y) {
 		return nullptr;
 	}
 }
+////////////////////////////////////////////////////////////////////
 
+Component* ApplicationManager::Get_Moveable_Component_By_Coordinates(int x,int y) {
+
+	if (CompList != nullptr)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+			if (CompList[i]->isInRegion(x, y))
+			{
+				CompList[i]->setSelect(true);
+				CompList[i]->Draw(pUI);
+				return CompList[i];
+			}
+		}
+		return nullptr;
+	}
+}
 ////////////////////////////////////////////////////////////////////
 
 void ApplicationManager::ExecuteAction(ActionType ActType)

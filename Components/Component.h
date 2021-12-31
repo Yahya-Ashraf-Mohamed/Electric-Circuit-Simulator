@@ -49,9 +49,15 @@ public:
 	
 	void setSelect(bool isselect);
 
+	void setX1(int xOld);
+	void setY1(int yOld);
+
+	int getX1();
+	int getY1();
+
 	bool getSelect(); //return select true:false
 
-	GraphicsInfo* get_Comp_Graphics_Info();
+	GraphicsInfo get_Comp_Graphics_Info();
 
 	Component();	
 	

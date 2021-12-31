@@ -8,10 +8,12 @@ class ActionMove : public Action
 {
 private:
 	
+	int Selected_X, Selected_y;
+
 	UI* pUI = nullptr;
 	window* pWind = nullptr;
 	//Action* pAct = new Select(this);
-	//Select* pSelect = nullptr;
+	//Select* pSelect = new Select(pManager);
 	Component* MoveComp;
 
 public:
