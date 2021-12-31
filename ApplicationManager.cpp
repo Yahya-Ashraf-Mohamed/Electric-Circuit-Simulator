@@ -1,5 +1,6 @@
 #include "ApplicationManager.h"
 
+//Make new branch on git hub
 
 ApplicationManager::ApplicationManager()
 {
