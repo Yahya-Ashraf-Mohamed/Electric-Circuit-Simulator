@@ -11,7 +11,6 @@ private:
 	UI* pUI = nullptr;
 	window* pWind = nullptr;
 	//Action* pAct = new Select(this);
-	//Select* pSelect = nullptr;
 	Component* MoveComp;
 
 public:

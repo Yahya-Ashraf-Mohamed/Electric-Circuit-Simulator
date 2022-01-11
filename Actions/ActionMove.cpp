@@ -5,14 +5,6 @@ ActionMove::ActionMove(ApplicationManager* pApp) :Action(pApp)
     pUI = pManager->GetUI(); //pointer to UI
     pWind = pUI->GetpWind(); //pointer to window
 
-    pUI->PrintMsg("Select the component you want to move");
-
-    //pSelect->Execute();
-
-    //MoveComp = pSelect->GetSelected_Component();
-    /*pAct->Execute();*/
-    //Component* MoveComp = pSelect->GetSelected_Component();
-
 }
 
 ActionMove::~ActionMove(void) {}
@@ -23,9 +15,31 @@ void ActionMove::Execute()
 {
 //get selected coordinates send it to select and then get elected component then get its dimention then start to move 
 
-    pUI->ClearStatusBar();
+    Select* pSelect = nullptr;
 
-    pWind->SetBuffering(true);
+    if (pManager->is_one_Comp_selected() == false)
+    {
+        pUI->PrintMsg("One component must be selected Only!");
+        return;
+    }
+
+    //pUI->PrintMsg("Select the component you want to move");
+
+
+    //for(int i =0; i = pManager->GetCompCount(); i++)
+    //{
+    //    
+    //}
+
+    //pSelect->Execute();
+    /*pManager->ExecuteAction(SELECT);*/
+
+    MoveComp = pManager->get_selected_Component();
+    /*pAct->Execute();*/
+    //Component* MoveComp = pSelect->GetSelected_Component();
+ 
+
+    //pWind->SetBuffering(true);
 
     bool isDragged = false;
 
@@ -33,11 +47,11 @@ void ActionMove::Execute()
 
     int X_Old = 0, Y_Old = 0;
 
-    GraphicsInfo* MoveCompInfo = MoveComp->get_Comp_Graphics_Info();
+    GraphicsInfo MoveCompInfo = MoveComp->get_Comp_Graphics_Info();
 
     //to do points of the Component got from select  (pointer for the componenet)
-    int X1 = MoveCompInfo->PointsList[0].x;
-    int Y1 = MoveCompInfo->PointsList[0].y;
+    int X1 = MoveCompInfo.PointsList[0].x;
+    int Y1 = MoveCompInfo.PointsList[0].y;
     int height = pUI->getCompHeight();
     int width = pUI->getCompWidth();
 
@@ -47,6 +61,10 @@ void ActionMove::Execute()
             if (((X > X1) && (X < (X1 + width))) && ((Y > Y1) && (Y < (Y1 + height)))) {
                 isDragged = true;
                 X_Old = X; Y_Old = Y;
+                pUI->ClearStatusBar();
+                pManager->UpdateInterface();
+                pUI->PrintMsg("Moving the component");
+
             }
         }
     }
@@ -56,18 +74,20 @@ void ActionMove::Execute()
         }
         else {
             if (X != X_Old) {
-                X1 = X1 + (X - X_Old);
+                MoveCompInfo.PointsList[0].x = MoveCompInfo.PointsList[0].x + (X - X_Old);
                 X_Old = X;
             }
             if (Y != Y_Old) {
-                Y1 = Y1 + (Y - Y_Old);
+                MoveCompInfo.PointsList[0].y = MoveCompInfo.PointsList[0].y + (Y - Y_Old);
                 Y_Old = Y;
             }
+            pManager->UpdateInterface();
+            pUI->PrintMsg("Moving the component");
         }
 
     }
 
-    pWind->UpdateBuffer();
+    //pWind->UpdateBuffer();
 }
 
 

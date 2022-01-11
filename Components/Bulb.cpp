@@ -19,13 +19,13 @@ void Bulb::Operate() {}
 Bulb::Bulb()		// no arg constructor
 {
 	Internal_res = 0;
-	isTurn = false;
+	isTurnON = false;
 	bulb_num += 1;
 }
-Bulb::Bulb(double Internal_res, bool isTurn)		// Arg constructor
+Bulb::Bulb(double Internal_res /*, bool isTurn*/)		// Arg constructor
 {
 	double Internal_resistance = Internal_res;
-	bool isTurnON = isTurn;
+	/*isTurnON = isTurn;*/
 	bulb_num += 1;
 }
 
@@ -42,14 +42,12 @@ double Bulb::getInter_Resistance()
 	//pUI->ClearStatusBar();
 }
 
-bool Bulb::Display_Light()
+//bool Bulb::Display_Light()
+//{
+//	return false;
+//}
+
+void Bulb::set_state(bool NewState)
 {
-	//pUI->PrintMsg("Turn on (y or n ) ? ");
-	string option;
-	//option = pUI->GetSrting();
-	if (option == "y" || option == "Y")
-		isTurn = true;
-	else
-		isTurn = false;
-	return isTurn;
+	isTurnON = NewState;
 }

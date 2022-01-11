@@ -18,6 +18,7 @@ protected:
 	//Each component has two ending terminals (term1, term2)
 	double term1_volt, term2_volt;	//voltage at terminals 1&2
 	bool isSelected = false;
+	bool isClosed = false;
 
 	//Each terminal is connected to set of connections
 	Connection *term1_connections[MAX_CONNS]; //list of pointers to connections
@@ -41,7 +42,6 @@ public:
 	
 	
 	//virtual int GetOutPinStatus()=0;	//returns status of outputpin if LED, return -1
-	//virtual int GetInputPinStatus(int n)=0;	//returns status of Inputpin # n if SWITCH, return -1
 
 	//virtual void setInputPinStatus(int n, STATUS s)=0;	//set status of Inputpin # n, to be used by connection class.
 
@@ -51,7 +51,11 @@ public:
 
 	bool getSelect(); //return select true:false
 
-	GraphicsInfo* get_Comp_Graphics_Info();
+	void set_is_closed(bool state);
+
+	bool get_is_closed(); //return isClosed true:false
+
+	GraphicsInfo get_Comp_Graphics_Info();
 
 	Component();	
 	

@@ -49,7 +49,17 @@ bool Component::getSelect()
 	return isSelected;
 }
 
-GraphicsInfo* Component::get_Comp_Graphics_Info() { return m_pGfxInfo; }
+void Component::set_is_closed(bool state)
+{
+	isClosed = state;
+}
+
+bool Component::get_is_closed()
+{
+	return isClosed;
+}
+
+GraphicsInfo Component::get_Comp_Graphics_Info() { return *m_pGfxInfo; }
 
 Component::~Component()
 {}

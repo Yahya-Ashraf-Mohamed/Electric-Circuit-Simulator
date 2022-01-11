@@ -71,10 +71,11 @@ class UI
 		ITM_Start_SIM,			//Start Simulate item
 		ITM_Stop_SIM,			//Stop simulation
 		ChangeSwitch_ON_OFF,    //Change the switch state On/Off
-//		Select,					//Select the clicked componnent 
-		Change_Mode_Design,
-
-		ITM_EXIT_Simulation,	// Exit item
+		Select,					//Select the clicked componnent 
+		Ammeter,				//Ammeter showes the current intensity (I)
+		Voltmeter,				//Voltmeter showes the current intensity (I)
+		Change_Mode_Design,		//Switchs to design mood
+		ITM_EXIT_Simulation,	//Exit item
 
 		ITM_SIM_CNT				//no. of simulation menu items ==> This should be the last line in this enum
 	
@@ -83,7 +84,7 @@ class UI
 
 	MODE AppMode;		//Application Mode (design or simulation)
 	
-	static const int	width = 1215, height = 630,	//Window width and height
+	static const int	width = 1216, height = 630,	//Window width and height
 						wx = 15 , wy = 15,			//Window starting coordinates
 						StatusBarHeight = 50,	//Status Bar Height
 						ToolBarHeight = 80,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
@@ -154,7 +155,8 @@ public:
 	void Draw_Buzzer(const GraphicsInfo& r_GfxInfo, bool selected) const;
 	// Draws a Fuse function
 	void Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected, bool isDameged) const;
-
+	//Draw module
+	void Draw_Module(const GraphicsInfo& r_GfxInfo, bool selected) const;
 
 	// Draws Connection function   // to be completed soon
 	void DrawConnection(const GraphicsInfo &Comp1_GfxInfo, const GraphicsInfo& Comp2_GfxInfo, bool selected) const;

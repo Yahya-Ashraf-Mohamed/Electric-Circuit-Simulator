@@ -29,8 +29,8 @@ void Select::Execute()
 		this->unselect_All();
 	}
 }
-Component* Select::GetSelected_Component()
 
+Component* Select::GetSelected_Component()
 {
 	return selected_Component;
 }

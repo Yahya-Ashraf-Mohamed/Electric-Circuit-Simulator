@@ -111,9 +111,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actions\ActionAddBulb.cpp" />
+    <ClCompile Include="Actions\ActionAddModule.cpp" />
     <ClCompile Include="Actions\ActionAddRes.cpp" />
     <ClCompile Include="Actions\ActionMove.cpp" />
     <ClCompile Include="Actions\Select.cpp" />
+    <ClCompile Include="Actions\Simulate.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -155,6 +157,7 @@
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="Components\Connection.cpp" />
     <ClCompile Include="Components\Edit.cpp" />
+    <ClCompile Include="Components\Module.cpp" />
     <ClCompile Include="Components\Resistor.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="UI\UI.cpp" />
@@ -162,9 +165,11 @@
   <ItemGroup>
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddBulb.h" />
+    <ClInclude Include="Actions\ActionAddModule.h" />
     <ClInclude Include="Actions\ActionAddRes.h" />
     <ClInclude Include="Actions\ActionMove.h" />
     <ClInclude Include="Actions\Select.h" />
+    <ClInclude Include="Actions\Simulate.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -190,6 +195,7 @@
     <ClInclude Include="Components\Component.h" />
     <ClInclude Include="Components\Connection.h" />
     <ClInclude Include="Components\Edit.h" />
+    <ClInclude Include="Components\Module.h" />
     <ClInclude Include="Components\Resistor.h" />
     <ClInclude Include="Defs.H" />
     <ClInclude Include="UI\UI.h" />

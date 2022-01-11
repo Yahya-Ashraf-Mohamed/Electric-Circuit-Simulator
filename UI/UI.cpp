@@ -153,7 +153,7 @@ ActionType UI::GetUserAction() const
 
 			case Group_Move_And_Undo:
 				if (y < ToolBarHeight / 2) {							//user clicked on the upper part of the image
-	//				return MOVE;										//Item Move is clicked
+					return MOVE;										//Item Move is clicked
 				}
 				else
 				{
@@ -211,7 +211,9 @@ ActionType UI::GetUserAction() const
 			case ITM_Start_SIM:			return Start_Simulation; //Item Start simulation
 			case ITM_Stop_SIM:			return Stop_Simulation;	 //Item Stop simulation
 			case ChangeSwitch_ON_OFF:	return Change_Switch;	 //Item Change switch state
-//			case Select:				return SELECT;			 //Item Select is clicked
+			case Select:				return SELECT;			 //Item Select is clicked
+			case Ammeter:				return Intensity;          //Item Ammeter is clicked
+			case Voltmeter:				return Voltage;          //Item Ammeter is clicked
 			case Change_Mode_Design:	return DSN_MODE;		 //change app mode to Design mode
 			case ITM_EXIT_Design:		return EXIT;			 //Exit the application
 
@@ -311,6 +313,7 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[Group_EditLable_And_Delete] = "images\\Menu\\Edit_Lable&delete.jpg";
 	MenuItemImages[Change_Mode_Simulation] = "images\\Menu\\Menu_simulation.jpg";
 
+
 	MenuItemImages[ITM_EXIT_Design] = "images\\Menu\\Menu_Exit.jpg";
 
 
@@ -325,7 +328,10 @@ void UI::CreateDesignToolBar()
 	pWind->DrawLine(0, 0, width, 0);
 	pWind->DrawLine(0, 0, 0, ToolBarHeight);
 	pWind->DrawLine(1370, 0, 1370, ToolBarHeight);
-	
+	pWind->DrawLine(0, 0, 0, 629);
+	pWind->DrawLine(1295, 0, 1295, 629);
+	pWind->DrawLine(0, 629, 1295, 629);
+
 	pWind->SetBrush(BLACK);
 
 	//Loop to draw the separation lines between the componnents in Design tool bar
@@ -345,7 +351,9 @@ void UI::CreateSimulationToolBar()
 	MenuItemImages[ITM_Start_SIM] = "images\\Menu\\Start.jpg";
 	MenuItemImages[ITM_Stop_SIM] = "images\\Menu\\End.jpg";
 	MenuItemImages[ChangeSwitch_ON_OFF] = "images\\Menu\\ON&OFF.jpg";
-//	MenuItemImages[Select] = "images\\Menu\\select.jpg";
+	MenuItemImages[Select] = "images\\Menu\\select.jpg";
+	MenuItemImages[Ammeter] = "images\\Menu\\Ammeter.jpg";
+	MenuItemImages[Voltmeter] = "images\\Menu\\Voltmeter.jpg";
 	MenuItemImages[Change_Mode_Design] = "images\\Menu\\Menu_Design.jpg";
 
 	MenuItemImages[ITM_EXIT_Simulation] = "images\\Menu\\Menu_Exit.jpg";
@@ -362,11 +370,14 @@ void UI::CreateSimulationToolBar()
 	pWind->DrawLine(0, 0, width, 0);
 	pWind->DrawLine(0, 0, 0, ToolBarHeight);
 	pWind->DrawLine(1370, 0, 1370, ToolBarHeight);
+	pWind->DrawLine(0, 0, 0, 629);
+	pWind->DrawLine(1295, 0, 1295, 629);
+	pWind->DrawLine(0, 629, 1295, 629);
 
 	pWind->SetBrush(BLACK);
 
 	//Loop to draw the separation lines between the componnents in Simulation tool bar
-	for (int position = 0; position < 560; position = position + 80) {
+	for (int position = 0; position < 720; position = position + 80) {
 		pWind->DrawLine(position, 0, position, ToolBarHeight);
 	};
 }
@@ -508,6 +519,20 @@ void UI::Draw_Fuse(const GraphicsInfo& r_GfxInfo, bool selected, bool isDameged)
 	//Draw Battery at Gfx_Info (1st corner)
 	pWind->DrawImage(Fuze_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
+
+//Draw module
+void UI::Draw_Module(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string Module_Image;
+	if (selected)
+		Module_Image = "Images\\Comp\\Module_1_HI.jpg";	//use image of highlighted resistor
+	else
+		Module_Image = "Images\\Comp\\Module_1.jpg";	//use image of the normal resistor
+
+	//Draw Battery at Gfx_Info (1st corner)
+	pWind->DrawImage(Module_Image, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+
 
 // Draws Connection function   // to be completed soon
 void UI::DrawConnection(const GraphicsInfo& Comp1_GfxInfo, const GraphicsInfo& Comp2_GfxInfo, bool selected) const

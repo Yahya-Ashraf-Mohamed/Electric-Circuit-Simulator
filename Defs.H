@@ -21,7 +21,11 @@ enum ActionType
 
 	Change_Switch,		//Change Switch Status in Simulation Mode
 
-	SELECT,		//Select a Component, a Connection
+	SELECT,				//Select a Component, a Connection
+
+	Intensity,	//Ammeter shows the current intensity
+	Voltage,	//Voltmeter showes the voltage acrosse the component 
+
 	DEL,		//Delete a Component, a Connection
 	MOVE,		//Move a Component, a Connection
 

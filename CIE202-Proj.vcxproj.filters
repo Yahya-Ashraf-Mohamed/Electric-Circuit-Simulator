@@ -159,6 +159,15 @@
     <ClCompile Include="Actions\Select.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Components\Module.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionAddModule.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Simulate.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h">
@@ -254,6 +263,15 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\Select.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Module.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddModule.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Simulate.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,17 @@
 #include "ApplicationManager.h"
 
+//to open :)
+template <class T>
+int WhatType(T* t) { return 0; } // if the type of the pointer was any thing except what I want it do nothing
+
+template <>
+int WhatType(Module* t) { return TypeModule; }	// if the type of the pointer was module so it returns module  
+
+//template <>  //to to just enter class ground and it will work
+//int WhatType(Ground* t) { return TypeGround; }	// if the type of the pointer was module so it returns module  
+
+//template <>
+//int WhatType(Switch* t) { return TypeSwitch; }	// if the type of the pointer was module so it returns module
 
 ApplicationManager::ApplicationManager()
 {
@@ -10,6 +22,7 @@ ApplicationManager::ApplicationManager()
 
 	//Creates the UI Object & Initialize the UI
 	pUI = new UI;
+
 }
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
@@ -23,6 +36,76 @@ void ApplicationManager::AddConnection(Connection* pConn)
 	ConnList[ConnCount++] = pConn;
 }
 ////////////////////////////////////////////////////////////////////
+
+Component* ApplicationManager::getSwitch(int x, int y)
+{
+	if (CompList != nullptr)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+			if (CompList[i]->isInRegion(x, y))
+			{
+				if (WhatType(CompList[i]) == TypeSwitch)
+					return CompList[i];
+				else
+					return nullptr;
+			}
+		}
+		return nullptr;
+	}
+}
+////////////////////////////////////////////////////////////////////
+
+bool ApplicationManager::is_All_Switchs_Closed()
+{
+	if (CompList != nullptr)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+			if (WhatType(CompList[i]) == TypeSwitch)
+			{
+				//Check if CompList[i] (switch) is open
+				//return false;
+			}
+		}
+		
+		return true;
+	}
+}
+////////////////////////////////////////////////////////////////////
+
+void ApplicationManager::Turn_Lamp_on()
+{
+	if (CompList != nullptr)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+			if (WhatType(CompList[i]) == TypeLamp)
+			{
+				CompList[i]->set_is_closed(true);
+			}
+		}
+	}
+
+}
+
+////////////////////////////////////////////////////////////////////
+int ApplicationManager::get_Module_count()
+{
+	
+	if (CompList != nullptr)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+			if (WhatType(CompList[i]) == TypeModule)
+			{
+				ModuleCount = ModuleCount + 1;
+			}
+		}
+		return ModuleCount;
+	}
+	return 0;
+}
 
 ActionType ApplicationManager::GetUserAction()
 {
@@ -63,6 +146,43 @@ void ApplicationManager::UnSelectedComp()
 		}
 	}
 }
+
+bool ApplicationManager::is_one_Comp_selected()
+{
+	int count = 0;
+
+	for (int j = 0; j < CompCount; j++)
+	{
+		if (CompList[j]->getSelect() == true)
+		{
+			count = count + 1;
+		}
+	}
+	if (count != 1)
+		return false;
+	else
+		return true;
+}
+
+Component* ApplicationManager::get_selected_Component()
+{
+	if (CompList != nullptr)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+			if (CompList[i]->getSelect() == true)
+			{
+				return CompList[i];
+			}
+		}
+		return nullptr;
+	}
+}
+
+
+
+
+
 
 Component* ApplicationManager::Get_Component_By_Coordinates(int x, int y) {
 
@@ -142,7 +262,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		//	pAct = new ActionAddRes(this);
 			break;
 		case Add_Module_1:
-			pAct = new ActionAddRes(this);
+			pAct = new ActionAddModule(this);
 			break;
 		case ADD_Label:
 		//	pAct = new ActionAddRes(this);
@@ -152,6 +272,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case Change_Switch:
 //			pAct = new ActionAddRes(this);
+			break;
+		case Intensity:
+			//	pAct = new ActionAddRes(this);
+			break;
+		case Voltage:
+			//			pAct = new ActionAddRes(this);
 			break;
 		case SELECT:
 			pAct = new Select(this);
@@ -179,6 +305,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case SIM_MODE:
 		//	pAct = new ActionAddRes(this);
+			break;
+		case Start_Simulation:
+			pAct = new Simulate(this);
 			break;
 
 		case EXIT:

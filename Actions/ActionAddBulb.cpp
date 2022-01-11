@@ -1,5 +1,4 @@
 #include "ActionAddBulb.h"
-#include "..\ApplicationManager.h"
 
 
 ActionAddBulb::ActionAddBulb(ApplicationManager* pApp):Action(pApp){}
