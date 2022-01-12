@@ -75,6 +75,11 @@ int Component::Which_Terminal()
 		return Right;
 }
 
+void Component::set_label(string name)
+{
+	m_Label = name;
+}
+
 
 Component::~Component()
 {}
