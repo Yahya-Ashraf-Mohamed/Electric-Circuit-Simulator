@@ -10,9 +10,30 @@ int WhatType(Module* t) { return TypeModule; }	// if the type of the pointer was
 template <>  //to to just enter class ground and it will work
 int WhatType(Ground* t) { return TypeGround; }	// if the type of the pointer was module so it returns module  
 
+template <class Resistor>
+int WhatType(Resistor* t) { return TypeResistor; }
+
+template <class Bulb>
+int WhatType(Bulb* t) { return TypeBulb; }
+
+template <class Buzzer>
+int WhatType(Buzzer* t) { return TypeBuzzer; }
+
+
 //template <>
 //int WhatType(Switch* t) { return TypeSwitch; }	// if the type of the pointer was module so it returns module
 
+//template <>
+//int WhatType(Fuse* t) { return TypeFuse; }
+
+template <class Battery>
+int WhatType(Battery* t) { return TypeBattery; }
+
+//template <>  //to to just enter class ground and it will work
+//int WhatType(Ground* t) { return TypeGround; }	// if the type of the pointer was module so it returns module  
+
+//template <>
+//int WhatType(Switch* t) { return TypeSwitch; }	// if the type of the pointer was module so it returns module
 
 
 ApplicationManager::ApplicationManager()
@@ -409,6 +430,182 @@ UI* ApplicationManager::GetUI()
 }
 
 ////////////////////////////////////////////////////////////////////
+
+GraphicsInfo* ApplicationManager::point(int Cx , int Cy, int graphics_x, int graphics_y)
+{
+	GraphicsInfo* pGInfo = new GraphicsInfo(2);
+	pGInfo->PointsList[0].x = Cx - graphics_x / 2;
+	pGInfo->PointsList[0].y = Cy - graphics_y / 2;
+	pGInfo->PointsList[1].x = Cx + graphics_x / 2;
+	pGInfo->PointsList[1].y = Cy + graphics_y / 2;
+
+	return pGInfo;
+}
+
+
+
+
+void ApplicationManager::Load(ifstream& myfile, string Load_File_Name)
+{
+	myfile.open(Load_File_Name);
+	if (!myfile)
+	{
+		pUI->PrintMsg("This file doesn't exist.\n Try load again.");
+	}
+	else
+	{
+
+		string name; int id; string label; double value; int graphics_x; int graphics_y , int Cx , int  Cy;
+		int num_of_components;
+		myfile >> num_of_components;
+		for (int i = 0; i < num_of_components; i++)
+		{
+			myfile >> name;
+			myfile >> id;
+			myfile >> label;
+			myfile >> value;
+			myfile >> graphics_x;
+			myfile >> graphics_y;
+
+			if (name == "RES")
+			{
+				Resistor* pR = new Resistor;
+				pR->load(name, value);
+				pUI->GetPointClicked(Cx, Cy);
+				GraphicsInfo* pGInfo = point(Cx, Cy, graphics_x, graphics_y);
+				Resistor* pR = new Resistor(pGInfo);
+			}
+			/*else if (name == "SWT")
+			{
+				Switch* pS = new Switch;
+				pS -> load(name,value);
+				pUI->GetPointClicked(Cx, Cy);
+				GraphicsInfo* pGInfo = point(Cx, Cy, graphics_x, graphics_y);
+				Switch* pS = new Switch (pGInfo);
+
+			}*/
+			/*else if (name == "BAT")
+			{
+				Battery* pB = new Battery;
+				pB-> load (name,value);
+				pUI->GetPointClicked(Cx, Cy);
+				GraphicsInfo* pGInfo = point(Cx, Cy, graphics_x, graphics_y);
+				Battery* pBat = new Battery(pGInfo);
+
+			}*/
+			else if (name == "BLb")
+			{
+				Bulb* pBulb = new Bulb;
+				pBulb->load(label, value);
+				pUI->GetPointClicked(Cx, Cy);
+				GraphicsInfo* pGInfo = point(Cx, Cy, graphics_x, graphics_y);
+				Bulb* pB = new Bulb(pGInfo);
+			}
+			else if (name == "GND")
+			{
+				/*Ground* pGround = new Ground;
+				pGround->load(label, value);
+				pUI->GetPointClicked(Cx, Cy);
+				GraphicsInfo* pGInfo = point(Cx, Cy, graphics_x, graphics_y);
+				Ground* pG = new Ground(pGInfo);
+				
+				*/
+			}
+			else if (name == "BUZ")
+			{
+				Buzzer* pBuzzer = new Buzzer;
+				pBuzzer->load(label, value);
+				pUI->GetPointClicked(Cx, Cy);
+				GraphicsInfo* pGInfo = point(Cx, Cy, graphics_x, graphics_y);
+				Buzzer* pB = new Buzzer(pGInfo);
+			}
+			else if (name == "FUS")
+			{
+				/*Fuse* pFuse = new Fuse;
+				pFuse->load(label, value);
+				pUI->GetPointClicked(Cx, Cy);
+				GraphicsInfo* pGInfo = point(Cx, Cy, graphics_x, graphics_y);
+				Fuse* pB = new Fuse(pGInfo);
+				
+				*/
+			}
+
+		}
+		/*string none_name;
+		myfile >> none_name;
+		int num_of_connections;
+		for (int i = 0; i < num_of_connections; i++)
+		{
+
+		}*/
+	}
+
+
+
+
+
+}
+
+void ApplicationManager::Label()
+{
+	
+	Select* pselect = nullptr;
+	pUI->PrintMsg("Select the component:  ");
+	pselect -> GetSelected_Component();
+	pUI->ClearStatusBar();
+	component_type();
+	delete pselect;
+	pselect = nullptr;
+
+}
+
+void ApplicationManager::Edit()
+{
+	Select* pSelect = nullptr;
+	pUI->PrintMsg("Select the component:  ");
+	pSelect->GetSelected_Component();
+	pUI->ClearStatusBar();
+	component_type();
+	delete pSelect;
+	pSelect = nullptr;
+
+}
+
+Component* ApplicationManager::component_type()
+{
+	if (CompList != nullptr)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+			if (WhatType(CompList[i]) == TypeResistor)
+			{
+				return CompList[i];
+			}
+			else if (WhatType(CompList[i]) == TypeBulb)
+			{
+				return CompList[i];
+			}
+			else if (WhatType(CompList[i]) == TypeBuzzer)
+			{
+				return CompList[i];
+			}
+			/*else if (WhatType(CompList[i]) == TypeFuse)
+			{
+				return CompList[i];
+			}*/
+			else if (WhatType(CompList[i]) == TypeBattery)
+			{
+				return CompList[i];
+			}
+		}
+		return nullptr;
+
+	}
+}
+
+
+
+
 
 ApplicationManager::~ApplicationManager()
 {
