@@ -18,14 +18,18 @@
 #include "Actions/Switch_to_Design_mood.h"
 #include "Actions/ActionAddBuzzer.h"
 #include "Actions/ActionAddFuse.h"
-
+#include "fstream"
+#include "Components/Battery.h"
+#include "Label.h"
+#include "Components/Edit.h"
 
 
 
 
 //Main class that manages everything in the application.
 
-
+enum { TypeModule = 1, TypeGround, TypeSwitch, TypeLamp, TypeResistor,
+	TypeBulb, TypeBuzzer, TypeBattery };
 
 class ApplicationManager
 {
@@ -99,6 +103,17 @@ public:
 
 
 	bool is_All_Switchs_Closed(); //todo
+	
+	// to load a file
+	GraphicsInfo* point(int Cx, int Cy, int graphics_x, int graphics_y);
+	void Load(ifstream& myfile, string Load_File_Name);
+
+	//to label a component or a connection
+	void Label();
+	Component* component_type();
+
+	// To Edit a component or a connection
+	void Edit();
 
 	void Turn_Lamp_on();
 	//destructor
