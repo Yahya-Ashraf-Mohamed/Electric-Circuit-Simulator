@@ -114,6 +114,13 @@ public:
 
 	// To Edit a component or a connection
 	void Edit();
+	
+	// to copy
+	virtual Component* copy() = 0;
+
+
+	// to paste
+	Component* paste();
 
 	void Turn_Lamp_on();
 	//destructor
