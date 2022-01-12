@@ -295,7 +295,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new ActionAddGround(this);
 			break;
 		case Add_Buzzer:
-		//	pAct = new ActionAddRes(this);
+			//pAct = new ActionAddBuz(this);
 			break;
 		case Add_Fuse:
 		//	pAct = new ActionAddRes(this);
