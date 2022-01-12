@@ -1,53 +1,36 @@
-#include "Bulb.h"
-
-//ApplicationManager* pManager;
-//UI* pUI = pManager->GetUI();
-//Bulb* pBulb = nullptr;
-
-Bulb::Bulb(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
-{}
-
-void Bulb::Draw(UI* pUI)
+#pragma once
+#include "Component.h"
+#include "../ApplicationManager.h"
+class Bulb : public Component
 {
-	//Call output class and pass resistor drawing info to it.
-	pUI->Draw_Bulb(*m_pGfxInfo, isSelected, false); //update to draw resistor
+private:
+	double Internal_res;
+	bool isTurn;
+	int bulb_num = 0;
+	string bulb_name;
+public:
+	// constructors
+	Bulb();
+	Bulb(GraphicsInfo* r_GfxInfo);
+	Bulb(GraphicsInfo* r_GfxInfo, double internal);
+	//Bulb(double in_res, bool state);
+	ApplicationManager* pManager = nullptr;
+	UI* pUI = pManager->GetUI();
 
-}
 
-void Bulb::Operate() {}
+	// functions
+	virtual void Operate();	//Calculates the volt on both terminals
+	virtual void Draw(UI*);	//Draws the resistor
+	void setInter_Resistance();
+	double getInter_Resistance();
 
-Bulb::Bulb()		// no arg constructor
-{
-	Internal_res = 0;
-	isTurnON = false;
-	bulb_num += 1;
-}
-Bulb::Bulb(double Internal_res /*, bool isTurn*/)		// Arg constructor
-{
-	double Internal_resistance = Internal_res;
-	/*isTurnON = isTurn;*/
-	bulb_num += 1;
-}
+	void set_label(string name);
+	string get_label();
 
-// functions
-void Bulb::setInter_Resistance()
-{
-	//pUI->PrintMsg("Enter the Internal Resistance: \n");
-	//pUI-> GetSrting(Internal_res);
-	//pUI->ClearStatusBar();
-}
-double Bulb::getInter_Resistance()
-{
-	return Internal_res;
-	//pUI->ClearStatusBar();
-}
+	bool Display_Light();
 
-//bool Bulb::Display_Light()
-//{
-//	return false;
-//}
+	void load(string label, double value);
 
-void Bulb::set_state(bool NewState)
-{
-	isTurnON = NewState;
-}
+	~Bulb();
+
+};
