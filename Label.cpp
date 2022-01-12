@@ -1,40 +1,84 @@
 #include "Label.h"
+#include "ApplicationManager.h"
+#include <string.h>
 
 
 ApplicationManager* pManager = nullptr;
 UI* pUI = pManager->GetUI();
 
-//int Label::choose_option()
+//void Label::label()
 //{
-//	pUI->PrintMsg("Do you want to label 1\ component or 2\ connection \n Enter a number : ");
-//	string Choice;
-//	Choice =  pUI->GetSrting();
-//	int choice = stoi(Choice);
-//	return choice;
-//}
-//void Label::label_comp(int choice)
-//{
-//	/*if (choice == 1)
-//	{
-//		pUI->PrintMsg("Enter the component number: \n");
-//		string comp_num;
-//		comp_num = pUI->GetSrting();
-//		int comp_number = stoi(comp_num);
-//		pcomp_num = &comp_number;
-//
-//		pUI->ClearStatusBar();
-//
-//		pUI->PrintMsg("Enter the component name: \n");
-//		comp_new_name = pUI->GetSrting();
-//		string* pcomp_name = &comp_new_name;
-//		stoi(*pcomp_num) = *pcomp_name;
-//		
-//	}*/
 //
 //}
 
-void Label::label()
+Label::Label(ApplicationManager* pApp) : Component()
 {
-	pManager->Label();
+    ApplicationManager* pManager = nullptr;
+    UI* pUI = pManager->GetUI();
 
 }
+
+
+
+//Component* ActionMove::Get_Selected_Comp() { return pSelect->GetSelected_Component(); }
+
+void Label::Execute()
+{
+	//get selected coordinates send it to select and then get elected component then get its dimention then start to move 
+
+	Select* pSelect = nullptr;
+
+	if (pManager->is_one_Comp_selected() == false)
+	{
+		pUI->PrintMsg("One component must be selected Only!");
+		return;
+	}
+
+	//choosen_component = pManager->get_selected_Component();
+	Component* choosen_component = pManager-> component_type();
+
+	//choosen_component->set_label(comp_name);	
+	Resistor* pR = new Resistor;
+	Bulb* pB = new Bulb;
+	Battery* pBat = new Battery;
+	//Switch* pS = new Switch;
+	/*Ground* pG = new Ground;
+	Fuse* pF = new Fuse;*/
+	Buzzer* pBuz = new Buzzer;
+
+
+	for (int i = 0; i < 6; i++)
+	{
+		if (choosen_component == pR)
+		{
+			pR->set_label(comp_name);
+		}
+		else if (choosen_component == pB)
+		{
+			pB->set_label(comp_name);
+		}
+		/*else if (choosen_component == pS)
+		{
+			pS->set_label(comp_name);
+		}*/
+		/*else if (choosen_component == pG)
+		{
+			pG->set_label(comp_name);
+		}
+		else if (choosen_component == pF)
+		{
+			pF->set_label(comp_name);
+		}*/
+		else if (choosen_component == pBuz)
+		{
+			pBuz->set_label(comp_name);
+		}
+		/*else if (choosen_component == pBat)
+		{
+			pBat->set_label(comp_name);
+		}*/
+	}
+	
+}
+
+Label::~Label() {}
