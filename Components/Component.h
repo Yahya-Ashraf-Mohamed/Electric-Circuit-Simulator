@@ -62,6 +62,8 @@ public:
 	void set_Comp_Graphics_Info(int x, int y);
 
 	int Which_Terminal();
+	
+	virtual void set_label(string name) ;
 
 	Component();
 
