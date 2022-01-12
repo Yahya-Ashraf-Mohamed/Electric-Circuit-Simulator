@@ -14,7 +14,6 @@ public:
 	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws the resistor
 
-
 	Resistor();		// No_Arg Constructor
 
 	Resistor(string name, double Value);		// Arg_constructor
@@ -27,6 +26,9 @@ public:
 
 
 	void load(string label, double value);
+
+	Component* copy();
+
 	virtual ~Resistor();
 
 
@@ -36,5 +38,6 @@ protected:
 	double Val_Of_res;
 
 };
+
 
 
