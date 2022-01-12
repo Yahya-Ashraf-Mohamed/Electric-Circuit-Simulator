@@ -14,8 +14,6 @@ public:
 	Bulb(GraphicsInfo* r_GfxInfo);
 	Bulb(GraphicsInfo* r_GfxInfo, double internal);
 	//Bulb(double in_res, bool state);
-	ApplicationManager* pManager = nullptr;
-	UI* pUI = pManager->GetUI();
 
 
 	// functions
@@ -28,6 +26,8 @@ public:
 	string get_label();
 
 	bool Display_Light();
+
+	Component* copy();
 
 	void load(string label, double value);
 
