@@ -1,22 +1,22 @@
 #pragma once
 #include "Component.h"
+#include "..\ApplicationManager.h"
 
-class Edit : public Component
+class Edit : public Component 
 {
 private:
-	string new_name_of_comp;
-	string old_name_of_comp;
-	string new_name_of_conn;
-	string old_name_of_conn;
+	string edited_name;
 public:
 
-	int choose_option();
+	Edit (ApplicationManager* pApp); //Constructor
 
-	void the_comp_conn_changed(int choice);
 
-	void the_edited_comp();
+	virtual void Execute();
 
-	void the_edited_conn();
+	virtual void Undo();
+	virtual void Redo();
+
+	~Edit();
 };
 
 
