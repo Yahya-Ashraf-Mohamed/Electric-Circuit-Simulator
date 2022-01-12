@@ -55,5 +55,12 @@ void Buzzer::load(string label, double value)
 	this->buzzer_label = label;
 }
 
+Component* Buzzer::copy()
+{
+	Buzzer* pBuzzer = new Buzzer;
+	Component* pcomponent = pBuzzer;
+	return pcomponent;
+}
+
 Buzzer::~Buzzer()
 {}
