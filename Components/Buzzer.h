@@ -24,5 +24,7 @@ public:
 	double getinner_Resistance();
 	bool Turned_on();
 	void load(string label, double value);
+
+	Component* copy();
 	~Buzzer();
 };
