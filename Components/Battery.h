@@ -1,35 +1,26 @@
-#pragma once
 #include "Component.h"
 #include "..//ApplicationManager.h"
 
-class Battery {
-private:
-	float power;
-	float voltage;
-	float max_energy;
-	float current_energy;
-	float required_energy;
-	float current;
-	int time;
 
-	int number_of_Battery = 1;
-	double value_of_Battery = 1;
+class Battery :public Component {
+private:
+	double Voltage_Of_Battery = 0;
+	double Internal_Resistance_Of_Battery = 0;
+	int Battery_Number = 0;
 
 public:
 	Battery();
-	void Get_Energy(float currentenergy, float maxenergy, float voltage);
-	void Power_Device(float current, float volatge, int time);
-	void Max_Time(float current, float voltage, int time);
+	Battery(GraphicsInfo* r_GfxInfo, double Resistance, double Voltage);
+	Battery(double newinter_voltage, double newinter_resistance);
 
 
-	Battery(GraphicsInfo* r_GfxInfo);
+	// functions
 	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws the Battery
-	ApplicationManager* pManager = nullptr;
-	UI* pUI = pManager->GetUI();
-	Battery(string m_label, int number, double value);
-	void set_value_of_the_battery(UI* pUI) const;
-	double get_value_of_the_battery(double value_of_Battery);
-	void set_name_of_the_battery();
-	string get_name_of_the_battery();
+	void setvoltage_Battery(UI* pUI);
+	double getvoltage_Battery(UI* pUI);
+	void setinternalrestistance_battery(UI* pUI);
+	double getinternalrestistance_battery(UI* pUI);
+
+
 };

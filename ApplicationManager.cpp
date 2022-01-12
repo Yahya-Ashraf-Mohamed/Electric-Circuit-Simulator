@@ -7,11 +7,13 @@ int WhatType(T* t) { return 0; } // if the type of the pointer was any thing exc
 template <>
 int WhatType(Module* t) { return TypeModule; }	// if the type of the pointer was module so it returns module  
 
-//template <>  //to to just enter class ground and it will work
-//int WhatType(Ground* t) { return TypeGround; }	// if the type of the pointer was module so it returns module  
+template <>  //to to just enter class ground and it will work
+int WhatType(Ground* t) { return TypeGround; }	// if the type of the pointer was module so it returns module  
 
 //template <>
 //int WhatType(Switch* t) { return TypeSwitch; }	// if the type of the pointer was module so it returns module
+
+
 
 ApplicationManager::ApplicationManager()
 {
@@ -106,6 +108,28 @@ int ApplicationManager::get_Module_count()
 	}
 	return 0;
 }
+
+bool ApplicationManager::is_1_Ground_present()
+{
+	int countGround = 0;
+
+	if (CompList != nullptr)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+			if (WhatType(CompList[i]) == TypeGround)
+			{
+				countGround = countGround + 1;
+			}
+		}
+		
+	}
+	if (countGround == 1)
+		return true;
+	else
+		return false;
+}
+
 
 ActionType ApplicationManager::GetUserAction()
 {
@@ -243,13 +267,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		
 		case Add_Switch:
-		//	pAct = new ActionAddRes(this);
+			pAct = new ActionAddSwitch(this);
 			break;
 		case Add_Battery:
-		//	pAct = new ActionAddRes(this);
+			pAct = new ActionAddBattery(this);
 			break;
 		case Add_Ground:
-		//	pAct = new ActionAddRes(this);
+			pAct = new ActionAddGround(this);
 			break;
 		case Add_Buzzer:
 		//	pAct = new ActionAddRes(this);
@@ -349,6 +373,14 @@ void ApplicationManager::UpdateInterface()
 
 ////////////////////////////////////////////////////////////////////
 
+void ApplicationManager::UpdateDrawingArea()
+{
+	for (int i = 0; i < CompCount; i++) // Loop for drawing each component drowen in design area one by one
+		CompList[i]->Draw(pUI);
+	for (int i = 0; i < ConnCount; i++) // Loop for drawing each component drowen in design area one by one
+		ConnList[i]->Draw(pUI);
+
+}
 
 
 ////////////////////////////////////////////////////////////////////

@@ -61,6 +61,15 @@ bool Component::get_is_closed()
 
 GraphicsInfo Component::get_Comp_Graphics_Info() { return *m_pGfxInfo; }
 
+void Component::set_Comp_Graphics_Info(int x, int y)
+{
+
+	m_pGfxInfo->PointsList[0].x = x;
+	m_pGfxInfo->PointsList[0].y = y;
+
+}
+
+
 Component::~Component()
 {}
 

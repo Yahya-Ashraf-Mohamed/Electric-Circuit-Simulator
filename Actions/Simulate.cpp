@@ -18,21 +18,38 @@ Simulate::~Simulate(void)
 
 void Simulate::Execute()
 {
-
-	pManager->GetUI()->GetPointClicked(Selected_X, Selected_y);
-
-	if (pManager->getSwitch(Selected_X, Selected_y) != nullptr)
+	// Circuit Validation. 
+	if (pManager->is_1_Ground_present() == false)
 	{
-		// todo Change switch state
-		pUI->PrintMsg("Switch state has changed");
+		pUI->PrintMsg("Error! One ground only should be placed");
+		
+	}
+	else //to do the rest of cuircuit validation
+	{
+
 	}
 
-	pManager->GetUI()->ClearStatusBar();
-	
-	if (pManager->is_All_Switchs_Closed())			//to do check all switches are closed
+
+	// Start simulation
+	if (isCircuit_Valid == true)
 	{
-		pManager->Turn_Lamp_on();		//loop for lamps to turn on
-		//pUI->GetpWind()->PlaySound("Buzzer_Sound.MP3", Null, SND_SYNC)			//buzzer emit sound
+
+		pManager->GetUI()->GetPointClicked(Selected_X, Selected_y);
+
+		if (pManager->getSwitch(Selected_X, Selected_y) != nullptr)
+		{
+			// todo Change switch state
+			pUI->PrintMsg("Switch state has changed");
+		}
+
+		pManager->GetUI()->ClearStatusBar();
+
+		if (pManager->is_All_Switchs_Closed())			//to do check all switches are closed
+		{
+			pManager->Turn_Lamp_on();		//loop for lamps to turn on
+			//pUI->GetpWind()->PlaySound("Buzzer_Sound.MP3", Null, SND_SYNC)			//buzzer emit sound
+		}
+
 	}
 
 

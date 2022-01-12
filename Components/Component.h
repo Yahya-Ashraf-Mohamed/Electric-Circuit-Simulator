@@ -57,6 +57,8 @@ public:
 
 	GraphicsInfo get_Comp_Graphics_Info();
 
+	void set_Comp_Graphics_Info(int x, int y);
+
 	Component();	
 	
 	//Destructor must be virtual

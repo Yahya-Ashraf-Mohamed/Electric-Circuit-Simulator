@@ -168,6 +168,21 @@
     <ClCompile Include="Actions\Simulate.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Components\Switch.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Ground.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionAddBattery.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionAddGround.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionAddSwitch.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h">
@@ -272,6 +287,21 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\Simulate.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Switch.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Ground.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddBattery.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddGround.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddSwitch.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

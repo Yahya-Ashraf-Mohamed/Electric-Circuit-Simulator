@@ -8,6 +8,8 @@
 class Simulate : public Action
 {
 private:
+	
+	bool isCircuit_Valid;
 
 	int Selected_X, Selected_y;	//Clicked pointes
 

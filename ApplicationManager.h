@@ -11,6 +11,10 @@
 #include "Actions/Select.h"
 #include "Actions/ActionAddModule.h"
 #include "Actions/Simulate.h"
+#include "Actions/ActionAddSwitch.h"
+#include "Actions/ActionAddBattery.h"
+#include "Actions/ActionAddGround.h"
+
 //Main class that manages everything in the application.
 enum { TypeModule = 1, TypeGround, TypeSwitch, TypeLamp};
 
@@ -42,6 +46,8 @@ public:
 	void ExecuteAction(ActionType);
 	
 	void UpdateInterface();	//Redraws all the drawing window
+
+	void UpdateDrawingArea();
 
 	//Gets a pointer to UI Object
 	UI* GetUI();
@@ -79,6 +85,9 @@ public:
 
 	//get number of modules
 	int get_Module_count();
+
+	bool is_1_Ground_present();
+
 
 	bool is_All_Switchs_Closed(); //todo
 
