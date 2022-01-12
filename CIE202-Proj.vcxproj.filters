@@ -183,6 +183,12 @@
     <ClCompile Include="Actions\ActionAddSwitch.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\Switch_to_Simulation_mood.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Switch_to_Design_mood.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h">
@@ -302,6 +308,12 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ActionAddSwitch.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Switch_to_Simulation_mood.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Switch_to_Design_mood.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

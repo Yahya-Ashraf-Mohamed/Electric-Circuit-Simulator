@@ -69,6 +69,12 @@ void Component::set_Comp_Graphics_Info(int x, int y)
 
 }
 
+int Component::Which_Terminal()
+{
+	
+		return Right;
+}
+
 
 Component::~Component()
 {}

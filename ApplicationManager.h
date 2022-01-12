@@ -14,9 +14,14 @@
 #include "Actions/ActionAddSwitch.h"
 #include "Actions/ActionAddBattery.h"
 #include "Actions/ActionAddGround.h"
+#include "Actions/Switch_to_Simulation_mood.h"
+#include "Actions/Switch_to_Design_mood.h"
+
+
+
 
 //Main class that manages everything in the application.
-enum { TypeModule = 1, TypeGround, TypeSwitch, TypeLamp};
+
 
 
 class ApplicationManager

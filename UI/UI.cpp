@@ -54,6 +54,11 @@ MODE UI::GetAppMode()const
 	return AppMode;
 }
 
+void UI::SetAppMode(MODE mode)
+{
+	AppMode = mode;
+}
+
 void UI::GetClickLocation(int& x, int& y) {
 	pWind->GetMouseClick(x, y);
 }
@@ -215,7 +220,7 @@ ActionType UI::GetUserAction() const
 			case Ammeter:				return Intensity;          //Item Ammeter is clicked
 			case Voltmeter:				return Voltage;          //Item Ammeter is clicked
 			case Change_Mode_Design:	return DSN_MODE;		 //change app mode to Design mode
-			case ITM_EXIT_Design:		return EXIT;			 //Exit the application
+			case ITM_EXIT_Simulation:	return EXIT;			 //Exit the application
 
 			default: return DSN_TOOL;							 //A click on empty place in desgin toolbar
 			}
@@ -289,6 +294,18 @@ void UI::ClearDrawingArea() const
 	pWind->DrawRectangle(0, ToolBarHeight, width, height - StatusBarHeight);
 	
 }
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void UI::ClearToolBar() const
+{
+
+	pWind->SetPen(BLACK, 1);
+	pWind->SetBrush(WHITE);
+	pWind->DrawRectangle(0, 0, width, ToolBarHeight);
+
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
 //Draws the menu (toolbar) in the Design mode

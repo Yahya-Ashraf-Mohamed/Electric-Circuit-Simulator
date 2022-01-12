@@ -59,6 +59,8 @@ public:
 
 	void set_Comp_Graphics_Info(int x, int y);
 
+	int Which_Terminal();
+
 	Component();	
 	
 	//Destructor must be virtual

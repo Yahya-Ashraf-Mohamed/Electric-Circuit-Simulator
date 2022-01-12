@@ -119,6 +119,8 @@
     <ClCompile Include="Actions\ActionMove.cpp" />
     <ClCompile Include="Actions\Select.cpp" />
     <ClCompile Include="Actions\Simulate.cpp" />
+    <ClCompile Include="Actions\Switch_to_Design_mood.cpp" />
+    <ClCompile Include="Actions\Switch_to_Simulation_mood.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -178,6 +180,8 @@
     <ClInclude Include="Actions\ActionMove.h" />
     <ClInclude Include="Actions\Select.h" />
     <ClInclude Include="Actions\Simulate.h" />
+    <ClInclude Include="Actions\Switch_to_Design_mood.h" />
+    <ClInclude Include="Actions\Switch_to_Simulation_mood.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />

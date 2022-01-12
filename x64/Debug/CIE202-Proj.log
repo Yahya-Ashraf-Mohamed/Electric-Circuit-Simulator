@@ -1,2 +1,34 @@
-﻿  ActionMove.cpp
+﻿  ActionAddBattery.cpp
+  ActionAddBulb.cpp
+  ActionAddGround.cpp
+  ActionAddModule.cpp
+  ActionAddRes.cpp
+  ActionAddSwitch.cpp
+  ActionMove.cpp
+  Select.cpp
+  Simulate.cpp
+  Switch_to_Design_mood.cpp
+  Switch_to_Simulation_mood.cpp
+  ApplicationManager.cpp
+  Battery.cpp
+C:\Users\dell\Desktop\Last UI update\Components\Battery.cpp(19,9): warning C4101: 'Internal_Resistance_Of_Battery': unreferenced local variable
+  Bulb.cpp
+  Component.cpp
+  Connection.cpp
+  Edit.cpp
+  Ground.cpp
+  Module.cpp
+  Resistor.cpp
+  Generating Code...
+C:\Users\dell\Desktop\Last UI update\ApplicationManager.cpp(58): warning C4715: 'ApplicationManager::getSwitch': not all control paths return a value
+C:\Users\dell\Desktop\Last UI update\ApplicationManager.cpp(76): warning C4715: 'ApplicationManager::is_All_Switchs_Closed': not all control paths return a value
+C:\Users\dell\Desktop\Last UI update\ApplicationManager.cpp(204): warning C4715: 'ApplicationManager::get_selected_Component': not all control paths return a value
+C:\Users\dell\Desktop\Last UI update\ApplicationManager.cpp(235): warning C4715: 'ApplicationManager::Get_Component_By_Coordinates': not all control paths return a value
+  Compiling...
+  Switch.cpp
+C:\Users\dell\Desktop\Last UI update\Components\Switch.cpp(17,22): warning C4552: '+': result of expression not used
+  UI.cpp
+  main.cpp
+  Generating Code...
+C:\Users\dell\Desktop\Last UI update\UI\UI.cpp(239): warning C4715: 'UI::GetUserAction': not all control paths return a value
   CIE202-Proj.vcxproj -> C:\Users\dell\Desktop\Last UI update\x64\Debug\CIE202-Proj.exe

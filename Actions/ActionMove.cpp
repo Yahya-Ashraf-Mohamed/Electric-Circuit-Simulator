@@ -51,6 +51,7 @@ void ActionMove::Execute()
     //to do points of the Component got from select  (pointer for the componenet)
     //int X1 = MoveCompInfo.PointsList[0].x;
     //int Y1 = MoveCompInfo.PointsList[0].y;
+    
     int height = pUI->getCompHeight();
     int width = pUI->getCompWidth();
 
@@ -107,7 +108,9 @@ void ActionMove::Execute()
 
     pWind->SetBuffering(false);
 
+
     MoveComp->set_Comp_Graphics_Info(MoveCompInfo.PointsList[0].x, MoveCompInfo.PointsList[0].y);
+    //pManager->get_selected_Component()->set_Comp_Graphics_Info(MoveCompInfo.PointsList[0].x, MoveCompInfo.PointsList[0].y);
     pUI->ClearStatusBar();
     pManager->UpdateInterface();
 }

@@ -2,14 +2,15 @@
 
 Select::Select(ApplicationManager* pApp) :Action(pApp)
 {
-	pManager->GetUI()->ClearStatusBar();
-	pManager->GetUI()->PrintMsg("Click on the component to select");
-	pManager->GetUI()->GetPointClicked(Selected_X, Selected_y);
+	pUI = pManager->GetUI();
+	pUI->ClearStatusBar();
+	pUI->PrintMsg("Click on the component to select");
+	pUI->GetPointClicked(Selected_X, Selected_y);
 	if (Selected_y < pUI->getWindowHeight() - pUI->getStatusBarHeight() && Selected_y > pUI->getToolBarHeight())
-		pManager->GetUI()->ClearStatusBar();
+		pUI->ClearStatusBar();
 	else
 	{
-		pManager->GetUI()->PrintMsg("Please Select the Component from design area only!");
+		pUI->PrintMsg("Please Select the Component from design area only!");
 	}
 
 }

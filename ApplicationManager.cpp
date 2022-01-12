@@ -237,19 +237,20 @@ Component* ApplicationManager::Get_Component_By_Coordinates(int x, int y) {
 
 Connection* ApplicationManager::Get_Connection_By_Coordinates(int x, int y) {
 
-	if (ConnList != nullptr)
-	{
-		for (int i = 0; i < ConnCount; i++)
-		{
-			if (ConnList[i]->isInRegion(x, y))
-			{
-				ConnList[i]->setSelect(true);
-				ConnList[i]->Draw(pUI);
-				return ConnList[i];
-			}
-		}
-		return nullptr;
-	}
+	//if (ConnList != nullptr)
+	//{
+	//	for (int i = 0; i < ConnCount; i++)
+	//	{
+	//		if (ConnList[i]->isInRegion(x, y))
+	//		{
+	//			ConnList[i]->setSelect(true);
+	//			ConnList[i]->Draw(pUI);
+	//			return ConnList[i];
+	//		}
+	//	}
+	//	return nullptr;
+	//}
+	return nullptr;
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -325,10 +326,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		//	pAct = new ActionAddRes(this);
 			break;
 		case DSN_MODE:
-		//	pAct = new ActionAddRes(this);
+			pAct = new SwitchToDisMood(this);
 			break;
 		case SIM_MODE:
-		//	pAct = new ActionAddRes(this);
+			pAct = new SwitchToSimMood(this);
 			break;
 		case Start_Simulation:
 			pAct = new Simulate(this);

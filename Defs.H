@@ -3,6 +3,11 @@
 
 //This header file contains some defenitions to be used all over the application
 
+// Types of pointers
+enum { TypeModule = 1, TypeGround, TypeSwitch, TypeLamp };
+
+enum {Right, Left};
+
 //All possible actions
 enum ActionType
 {

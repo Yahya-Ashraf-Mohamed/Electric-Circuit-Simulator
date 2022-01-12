@@ -123,6 +123,8 @@ public:
 	void GetClickLocation(int& x, int& y);  //Reads the location where the user clicked
 
 	window* GetpWind();
+
+	void SetAppMode(MODE);
 	// Output Functions  ---------------------------
 	void ChangeTitle(string Title) const; //Change the title of the application
 
@@ -132,6 +134,7 @@ public:
 
 	void ClearStatusBar() const;	      //Clears the status bar
 	void ClearDrawingArea() const;		  //Clears the drawing area
+	void ClearToolBar() const;			  //Clears toolbar
 
 	bool Check_Valid(int x,int y)const;	  // This Function prevent the user to draw any where exept in Design area
 	
