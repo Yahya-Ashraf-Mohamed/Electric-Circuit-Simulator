@@ -9,7 +9,7 @@ Bulb::Bulb(GraphicsInfo* r_GfxInfo, double x) :Component(r_GfxInfo)
 void Bulb::Draw(UI* pUI)
 {
 	//Call output class and pass resistor drawing info to it.
-	pUI->Draw_Bulb(*m_pGfxInfo); //update to draw resistor
+	pUI->Draw_Bulb(*m_pGfxInfo,false,false); //update to draw resistor
 
 }
 
@@ -71,4 +71,14 @@ void Bulb::load(string label, double value)
 	this->Internal_res = value;
 	label = label;
 }
+
+Component* Bulb::copy()
+{
+	Bulb* pBulb = new Bulb;
+	Component* pcomponent = pBulb;
+	return pcomponent;
+}
+
+Bulb::~Bulb()
+{}
 
