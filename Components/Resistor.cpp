@@ -43,6 +43,13 @@ void Resistor::Operate(){}
 		this->Nam_Of_res = label;
 	}
 
+	Component* Resistor::copy()
+	{
+		Resistor* pResistor = new Resistor;
+		Component* pcomponent = pResistor;
+		return pcomponent;
+	}
+
 	Resistor::~Resistor()
 	{
 		cout << "Resistance is deconstructed. \n";
