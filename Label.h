@@ -1,23 +1,26 @@
 #pragma once
 #include "ApplicationManager.h"
+#include <string>
 
-class Label
+class Label : public Component
 {
 private:
-	int comp_num;
-	int conn_num;
-	int* pcomp_num = nullptr;
-	string comp_new_name;
-	string conn_new_name;
+	string comp_name;
+	UI* pUI = nullptr;
+	/*window* pWind = nullptr;*/
+	//Action* pAct = new Select(this);
+	//Component* choosen_component;
 
 public:
-	int choose_option();
+	Label();
+	Label(ApplicationManager* pApp); //Constructor
+	virtual ~Label(); //Destructor
 
-	void label_comp(int choice);
+	//Component* Get_Selected_Comp();
 
-	void label_conn(int choice);
+	//Execute action (code depends on action type)
+	virtual void Execute();
 
-	void label();
-
+	virtual void Undo();
+	virtual void Redo();
 };
-
