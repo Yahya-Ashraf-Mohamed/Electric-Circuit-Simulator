@@ -1,10 +1,32 @@
 ﻿  ActionAddBattery.cpp
+  ActionAddBulb.cpp
+  ActionAddFuse.cpp
+  ActionAddGround.cpp
+  ActionAddModule.cpp
+  ActionAddRes.cpp
+  ActionAddSwitch.cpp
+  ActionMove.cpp
+  Select.cpp
+  Simulate.cpp
+C:\Users\dell\Desktop\Last UI update\Actions\Simulate.cpp(47,5): error C2039: 'pUI': is not a member of 'Component'
+C:\Users\dell\Desktop\Last UI update\Components\Component.h(10): message : see declaration of 'Component'
+  Switch_to_Design_mood.cpp
+  Switch_to_Simulation_mood.cpp
   ApplicationManager.cpp
+C:\Users\dell\Desktop\Last UI update\ApplicationManager.cpp(87,18): error C2039: 'set_is_closed': is not a member of 'Component'
+C:\Users\dell\Desktop\Last UI update\Components\Component.h(10): message : see declaration of 'Component'
   Battery.cpp
-  Switch.cpp
+  Bulb.cpp
+  Component.cpp
+  Edit.cpp
+  Fuse.cpp
+C:\Users\dell\Desktop\Last UI update\Components\Fuse.cpp(19,2): error C2065: 'isClosed': undeclared identifier
+C:\Users\dell\Desktop\Last UI update\Components\Fuse.cpp(24,9): error C2065: 'isClosed': undeclared identifier
+  Ground.cpp
+  Module.cpp
   Generating Code...
-C:\Users\dell\Desktop\Last UI update\ApplicationManager.cpp(76): warning C4715: 'ApplicationManager::is_All_Switchs_Closed': not all control paths return a value
-C:\Users\dell\Desktop\Last UI update\ApplicationManager.cpp(58): warning C4715: 'ApplicationManager::getSwitch': not all control paths return a value
-C:\Users\dell\Desktop\Last UI update\ApplicationManager.cpp(222): warning C4715: 'ApplicationManager::get_selected_Component': not all control paths return a value
-C:\Users\dell\Desktop\Last UI update\ApplicationManager.cpp(253): warning C4715: 'ApplicationManager::Get_Component_By_Coordinates': not all control paths return a value
-  CIE202-Proj.vcxproj -> C:\Users\dell\Desktop\Last UI update\x64\Debug\CIE202-Proj.exe
+  Compiling...
+  Resistor.cpp
+  Switch.cpp
+  main.cpp
+  Generating Code...

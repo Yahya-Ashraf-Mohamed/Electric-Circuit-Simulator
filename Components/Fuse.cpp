@@ -1,6 +1,6 @@
 #pragma once
 #include"Fuse.h"
-//calling apointer to get the point in the Graphics information of the Switch//
+//calling apointer to get the point in the Graphics information of the Fuse//
 
 Fuse::Fuse(GraphicsInfo* r_GfxInfo, string name, int number, bool state) : Component(r_GfxInfo)
 {
@@ -11,7 +11,7 @@ Fuse::Fuse(GraphicsInfo* r_GfxInfo, string name, int number, bool state) : Compo
 
 void Fuse::Draw(UI* pUI)
 {
-	pUI->Draw_Switch(*m_pGfxInfo, isSelected, isDamaged); //update to draw resistor
+	pUI->Draw_Fuse(*m_pGfxInfo, isSelected, isDamaged); //update to draw resistor
 }
 
 void Fuse::set_State(bool state)
@@ -28,9 +28,9 @@ bool Fuse::stateisClosed()
 void Fuse::Operate() {}
 Fuse::Fuse()
 {
-	Nam_Of_Fuse = "Default Switch";
+	Nam_Of_Fuse = "Default Fuse";
 
-	//to do determine the number of Switch by templet class  think to put her or in action
+	//to do determine the number of Fuse by templet class  think to put her or in action
 	Number_of_Fuse = 1;
 
 }

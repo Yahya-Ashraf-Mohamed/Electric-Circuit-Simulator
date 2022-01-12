@@ -13,12 +13,14 @@ private:
 	string m_Label;
 
 	int X1, Y1, X2, Y2, Cx, Cy;
+	
 
 protected:
 	//Each component has two ending terminals (term1, term2)
 	double term1_volt, term2_volt;	//voltage at terminals 1&2
 	bool isSelected = false;
-	bool isClosed = false;
+	bool state = false;
+
 
 	//Each terminal is connected to set of connections
 	Connection* term1_connections[MAX_CONNS]; //list of pointers to connections
@@ -51,9 +53,9 @@ public:
 
 	bool getSelect(); //return select true:false
 
-	void set_is_closed(bool state);
+	void set_state(bool state);
 
-	bool get_is_closed(); //return isClosed true:false
+	bool get_state(); //return isClosed true:false
 
 	GraphicsInfo get_Comp_Graphics_Info();
 

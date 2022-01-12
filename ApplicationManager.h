@@ -17,6 +17,7 @@
 #include "Actions/Switch_to_Simulation_mood.h"
 #include "Actions/Switch_to_Design_mood.h"
 #include "Actions/ActionAddBuzzer.h"
+#include "Actions/ActionAddFuse.h"
 
 
 

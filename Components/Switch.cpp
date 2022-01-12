@@ -14,7 +14,7 @@ void Switch::Draw(UI* pUI)
 	pUI->Draw_Switch(*m_pGfxInfo, isSelected, isClosed); //update to draw resistor
 }
 
-void Switch::set_State(bool state)
+void Switch::set_State(bool state) //to do make it vertual
 {
 	isClosed = state;
 }

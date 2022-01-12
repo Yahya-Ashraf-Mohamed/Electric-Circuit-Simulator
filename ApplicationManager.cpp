@@ -298,7 +298,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			//pAct = new ActionAddBuz(this);
 			break;
 		case Add_Fuse:
-		//	pAct = new ActionAddRes(this);
+			pAct = new ActionAddFuse(this);
 			break;
 		case ADD_CONNECTION:
 			//TODO: Create AddConection Action here

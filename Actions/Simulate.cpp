@@ -18,6 +18,8 @@ Simulate::~Simulate(void)
 
 void Simulate::Execute()
 {
+	bool simulation = true;
+
 	// Circuit Validation. 
 	if (pManager->is_1_Ground_present() == false)
 	{
@@ -33,23 +35,30 @@ void Simulate::Execute()
 	// Start simulation
 	if (isCircuit_Valid == true)
 	{
-
-		pManager->GetUI()->GetPointClicked(Selected_X, Selected_y);
-
-		if (pManager->getSwitch(Selected_X, Selected_y) != nullptr)
+		while (simulation = true)
 		{
-			// todo Change switch state
-			pUI->PrintMsg("Switch state has changed");
+
+			pManager->GetUI()->GetPointClicked(Selected_X, Selected_y);
+
+			Component* Switch = pManager->getSwitch(Selected_X, Selected_y);
+			if (Switch != nullptr)
+			{
+				if (Switch->get_state() == true)
+					Switch->set_state(false);
+				else
+					Switch->set_state(true);
+
+				pUI->PrintMsg("Switch state has changed");
+			}
+
+			pManager->GetUI()->ClearStatusBar();
+
+			if (pManager->is_All_Switchs_Closed())			//to do check all switches are closed
+			{
+				pManager->Turn_Lamp_on();		//loop for lamps to turn on
+				//pUI->GetpWind()->PlaySound("Buzzer_Sound.MP3", Null, SND_SYNC)			//buzzer emit sound
+			}
 		}
-
-		pManager->GetUI()->ClearStatusBar();
-
-		if (pManager->is_All_Switchs_Closed())			//to do check all switches are closed
-		{
-			pManager->Turn_Lamp_on();		//loop for lamps to turn on
-			//pUI->GetpWind()->PlaySound("Buzzer_Sound.MP3", Null, SND_SYNC)			//buzzer emit sound
-		}
-
 	}
 
 

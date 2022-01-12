@@ -49,14 +49,14 @@ bool Component::getSelect()
 	return isSelected;
 }
 
-void Component::set_is_closed(bool state)
+void Component::set_state(bool s)
 {
-	isClosed = state;
+	state = s;
 }
 
-bool Component::get_is_closed()
+bool Component::get_state()
 {
-	return isClosed;
+	return state;
 }
 
 GraphicsInfo Component::get_Comp_Graphics_Info() { return *m_pGfxInfo; }
