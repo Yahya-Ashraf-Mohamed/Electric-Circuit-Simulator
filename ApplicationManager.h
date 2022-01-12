@@ -70,7 +70,8 @@ public:
 
 	//Check if all components are unselected
 	bool is_one_Comp_selected();
-
+	//bool is_Two_Comp_selected();
+	
 	Component* get_selected_Component();
 
 	//is in resion return a pointer

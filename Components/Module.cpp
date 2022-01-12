@@ -1,7 +1,12 @@
 #include "Module.h"
 
-Module::Module(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
-{}
+Module::Module(GraphicsInfo* r_GfxInfo, string name, int number, double Value) :Component(r_GfxInfo)
+{
+	this->Nam_Of_Module = name;
+	this->Num_Of_Module = number;
+	this->Val_Of_res = Value;
+
+}
 
 void Module::Draw(UI* pUI)
 {
@@ -18,6 +23,7 @@ Module::Module()
 
 	set_value_Module(1);
 }
+
 Module::Module(string name, int number, double Value)		// Arg_constructor
 {
 	Nam_Of_Module = name;

@@ -188,6 +188,24 @@ bool ApplicationManager::is_one_Comp_selected()
 		return true;
 }
 
+
+//bool ApplicationManager::is_Two_Comp_selected()
+//{
+//	int count = 0;
+//
+//	for (int j = 0; j < CompCount; j++)
+//	{
+//		if (CompList[j]->getSelect() == true)
+//		{
+//			count = count + 1;
+//		}
+//	}
+//	if (count != 2)
+//		return false;
+//	else
+//		return true;
+//}
+
 Component* ApplicationManager::get_selected_Component()
 {
 	if (CompList != nullptr)

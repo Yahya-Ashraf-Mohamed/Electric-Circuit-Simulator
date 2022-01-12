@@ -1,6 +1,15 @@
 #include "Select.h"
 
 Select::Select(ApplicationManager* pApp) :Action(pApp)
+{}
+
+Select::~Select(void)
+{
+	delete selected_Component;
+	selected_Component = nullptr;
+}
+
+void Select::Execute()
 {
 	pUI = pManager->GetUI();
 	pUI->ClearStatusBar();
@@ -13,16 +22,6 @@ Select::Select(ApplicationManager* pApp) :Action(pApp)
 		pUI->PrintMsg("Please Select the Component from design area only!");
 	}
 
-}
-
-Select::~Select(void)
-{
-	delete selected_Component;
-	selected_Component = nullptr;
-}
-
-void Select::Execute()
-{
 
 	selected_Component = pManager->Get_Component_By_Coordinates(Selected_X, Selected_y);
 	if (selected_Component == nullptr)

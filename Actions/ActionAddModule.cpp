@@ -18,6 +18,19 @@ void ActionAddModule::Execute()
 
 	//Get Center point of the area where the Comp should be drawn
 	pUI->GetPointClicked(Cx, Cy);
+	
+	//Getting the Name of module
+	pUI->PrintMsg("Enter the Name of the Module");
+	Nam_Of_Module = pUI->GetSrting();
+	
+	//Getting the ID number of module
+	pUI->PrintMsg("Enter the ID of the Module");
+	Num_Of_Module = stoi(pUI->GetSrting());
+
+	//Getting the resistance of resestor
+	pUI->PrintMsg("Enter the resistence for one resistor in the module:");
+	Val_Of_res = stod(pUI->GetSrting());
+
 
 	if (pUI->Check_Valid(Cx, Cy))
 	{
@@ -39,7 +52,7 @@ void ActionAddModule::Execute()
 		pGInfo->PointsList[1].y = Cy + compHeight / 2;
 
 		
-		Module* pM = new Module(pGInfo);
+		Module* pM = new Module(pGInfo, Nam_Of_Module, Num_Of_Module, Val_Of_res);
 		pManager->AddComponent(pM);
 
 	}

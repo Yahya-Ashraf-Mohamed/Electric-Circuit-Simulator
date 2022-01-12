@@ -1,23 +1,34 @@
 #pragma once
 #include "Component.h"
 #include"..//ApplicationManager.h"
+
 class Switch : public Component {
-private:
-	int switch_number = 0;
-	double voltage_on_switch = 0;
-	double internal_resistance = 0;
-	double volt_on_term1 = 0;
-	double volt_on_term2 = 0;
-	bool state = false;
+
+protected:
+	ApplicationManager* pManager;
+
+	string Nam_Of_Switch = "Defult Switch";
+	int Number_of_Switch;
+	const double value_of_Switch_voltage = 0;
+	bool isClosed = false;
+
 public:
-	Switch(GraphicsInfo* m_GFxInfo);
-	virtual void operate();//Calculates the volt on both terminals
+	Switch(GraphicsInfo* r_GfxInfo, string name, int number, bool state);
+	virtual void Operate();//Calculates the volt on both terminals
 	virtual void Draw(UI* pUI);	//Draws the switch 
 	Switch();
-	Switch(double newinter_voltage, double newinter_resistance);
-	bool isturn(bool);
-	ApplicationManager* pManager = nullptr;
-	UI* pUI = pManager->GetUI();
 
+
+
+	void set_State(bool);
+	bool stateisClosed();
+	void set_name_Switch(string newName);
+	string get_name_Switch();
+	double get_value_Switch();
+	void set_Num_Switch(int newNumber);
+	double get_Num_Switch();
+
+
+	virtual ~Switch();	
 
 };

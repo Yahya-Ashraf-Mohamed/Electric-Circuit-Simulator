@@ -7,6 +7,7 @@ Connection::Connection(GraphicsInfo *r_GfxInfo, Component *cmp1, Component *cmp2
 	Cmpnt1 = cmp1;
 	Cmpnt2 = cmp2;
 
+	
 	////Coordinates of cornerpoint 1
 	//X1 = pGfxInfo->PointsList[0].x;
 	//Y1 = pGfxInfo->PointsList[0].y;

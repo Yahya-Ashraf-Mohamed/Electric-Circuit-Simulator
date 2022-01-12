@@ -112,6 +112,7 @@
   <ItemGroup>
     <ClCompile Include="Actions\ActionAddBattery.cpp" />
     <ClCompile Include="Actions\ActionAddBulb.cpp" />
+    <ClCompile Include="Actions\ActionAddConnection.cpp" />
     <ClCompile Include="Actions\ActionAddGround.cpp" />
     <ClCompile Include="Actions\ActionAddModule.cpp" />
     <ClCompile Include="Actions\ActionAddRes.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddBattery.h" />
     <ClInclude Include="Actions\ActionAddBulb.h" />
+    <ClInclude Include="Actions\ActionAddConnection.h" />
     <ClInclude Include="Actions\ActionAddGround.h" />
     <ClInclude Include="Actions\ActionAddModule.h" />
     <ClInclude Include="Actions\ActionAddRes.h" />

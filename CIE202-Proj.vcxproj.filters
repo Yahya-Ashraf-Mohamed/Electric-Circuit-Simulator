@@ -189,6 +189,9 @@
     <ClCompile Include="Actions\Switch_to_Design_mood.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ActionAddConnection.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h">
@@ -314,6 +317,9 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\Switch_to_Design_mood.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddConnection.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

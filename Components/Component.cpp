@@ -78,4 +78,3 @@ int Component::Which_Terminal()
 
 Component::~Component()
 {}
-

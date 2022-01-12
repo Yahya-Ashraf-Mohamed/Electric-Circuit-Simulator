@@ -9,7 +9,7 @@ using namespace std;
 class Module :public Component
 {
 public:
-	Module(GraphicsInfo* r_GfxInfo);
+	Module(GraphicsInfo* r_GfxInfo, string name, int number, double Value);
 	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws the resistor
 
@@ -33,5 +33,7 @@ protected:
 	double Val_Of_res = 1;
 	// double Resis[];
 	double Val_Of_res_eq=0;
+	//double Voltage_Of_Module = 0;
+
 };
 

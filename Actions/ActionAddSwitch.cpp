@@ -1,6 +1,6 @@
-#include "..//Actions/ActionAddSwitch.h"
-#include"..//ApplicationManager.h"
-#include"..//Components/Switch.h"
+#pragma once
+#include"ActionAddSwitch.h"
+
 ActionAddSwitch::ActionAddSwitch(ApplicationManager* pApp) : Action(pApp)
 {}
 
@@ -14,17 +14,29 @@ void ActionAddSwitch::Execute()
 	UI* pUI = pManager->GetUI();
 
 	//Print Action Message
-	pUI->PrintMsg("Adding a new Switch: Click anywhere to add");
+	pUI->PrintMsg("Adding Switch: Click anywhere to add");
 
 	//Get Center point of the area where the Comp should be drawn
 	pUI->GetPointClicked(Cx, Cy);
 
-	if (pUI->Check_Valid(Cx, Cy) == true) {
+	//Getting the Name of Switch
+	pUI->PrintMsg("Enter the Name of the Switch");
+	Nam_Of_Switch = pUI->GetSrting();
 
+	//Getting the ID number of Switch
+	pUI->PrintMsg("Enter the ID of the Switch");
+	Number_of_Switch = stoi(pUI->GetSrting());
 
+	//Getting the State of the Switch
+	pUI->PrintMsg("Enter the State of the Switch [0] for closed [1] for open");
+	isClosed = stoi(pUI->GetSrting());
 
-		//Clear Status Bar
+	if (pUI->Check_Valid(Cx, Cy))
+	{
+
+		//Clear Status Bar	
 		pUI->ClearStatusBar();
+
 
 
 		GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
@@ -38,10 +50,10 @@ void ActionAddSwitch::Execute()
 		pGInfo->PointsList[1].x = Cx + compWidth / 2;
 		pGInfo->PointsList[1].y = Cy + compHeight / 2;
 
-		//creating new objectof switch component
-		//Switch* pS = new Switch(pGInfo);
-		//Adding the new component
-		//pManager->AddComponent(pS);
+
+		Switch* pS = new Switch(pGInfo, Nam_Of_Switch, Number_of_Switch, isClosed);
+		pManager->AddComponent(pS);
+
 	}
 	else {
 		pUI->PrintMsg("Unable to draw here!");
@@ -54,3 +66,4 @@ void ActionAddSwitch::Undo()
 
 void ActionAddSwitch::Redo()
 {}
+

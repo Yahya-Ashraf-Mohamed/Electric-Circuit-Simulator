@@ -21,18 +21,16 @@ void ActionAddBattery::Execute()
 	pUI->GetPointClicked(Cx, Cy);
 
 	//Getting the resistence of the battery
-	pUI->PrintMsg("Enetr the resistence of the battery:");
+	pUI->PrintMsg("Enter the resistence of the battery:");
 	Internal_Resistance_Of_Battery = stod(pUI->GetSrting());
 
 	//Getting the voltage of the battery
-	pUI->PrintMsg("Enetr the voltage of the battery");
+	pUI->PrintMsg("Enter the voltage of the battery");
 	Voltage_Of_Battery = stod(pUI->GetSrting());
 
 
 
 	if (pUI->Check_Valid(Cx, Cy) == true) {
-
-
 
 		//Clear Status Bar
 		pUI->ClearStatusBar();

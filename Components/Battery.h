@@ -6,7 +6,7 @@ class Battery :public Component {
 private:
 	double Voltage_Of_Battery = 0;
 	double Internal_Resistance_Of_Battery = 0;
-	int Battery_Number = 0;
+	int Battery_Number;
 
 public:
 	Battery();

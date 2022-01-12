@@ -10,13 +10,13 @@ Battery::Battery(GraphicsInfo* r_GfxInfo, double Resistance, double Voltage) : C
 void Battery::Draw(UI* pUI)
 {
 	//Call output class and pass Battery drawing info to it.//
-	pUI->Draw_Battery(*m_pGfxInfo, false);//ate to draw Battery
+	pUI->Draw_Battery(*m_pGfxInfo, isSelected);//ate to draw Battery
 
 }
 Battery::Battery()
 {
 	double Voltage_Of_Battery = 0;
-	double Internal_Resistance_Of_Battery;
+	double Internal_Resistance_Of_Battery = 0;
 	this->Battery_Number += 1;
 }
 //constructor with  argument// 

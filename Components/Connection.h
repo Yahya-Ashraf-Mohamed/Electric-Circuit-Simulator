@@ -12,6 +12,10 @@ private:
 	GraphicsInfo *pGfxInfo;	//The parameters required to draw a connection
 
 	int X1, Y1, X2, Y2;
+	int Cx1, Cy1, Cx2, Cy2;
+	
+	
+	UI* pUI;
 
 protected:
 
