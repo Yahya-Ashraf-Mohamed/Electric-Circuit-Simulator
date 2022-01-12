@@ -13,44 +13,34 @@ void Resistor::Operate(){}
 	Resistor::Resistor()
 	{
 		Nam_Of_res = "Default Ressistance";
-		// Num_Of_res = 1;
 		Val_Of_res = 1;
 	}
-	Resistor::Resistor(string name, int number, double Value)		// Arg_constructor
+	Resistor::Resistor(string name, double Value)		// Arg_constructor
 	{
 		Nam_Of_res = name;
-		// Num_Of_res = number;
+		Val_Of_res = Value;
 	}
-	void Resistor ::set_name_resistor()
+	void Resistor ::set_label(string resistance_name)
 	{
-		cout << "Enter the name of resistance. \n ";
-		cin >> Nam_Of_res;
+		Nam_Of_res = resistance_name;
 	}
-	string get_name_resistor(string Nam_Of_res)
+	string Resistor::get_label()
 	{
 		return Nam_Of_res;
 	}
-	void Resistor::set_value_resistor()	// limitations of resistance value
+	/*void Resistor::set_value_resistor(double resistance)
 	{
-		for (int i = 1; i < 3; i++)
-		{
-			double Value;
-			cout << "Enter the value of resistance. \n";
-			cin >> Value;
-			if (Value > 0 && Value < 10000)
-			{
-				Val_Of_res = Value;
-				break;
-			}
-			else
-			{
-				cout << "Out of Range. " << endl;
-			}
-		}
+		Val_Of_res = resistance;
 	}
 	double Resistor::get_value_resistor()
 	{
 		return Val_Of_res;
+	}*/
+
+	void Resistor::load(string label, double value)
+	{
+		this->Val_Of_res = value;
+		this->Nam_Of_res = label;
 	}
 
 	Resistor::~Resistor()
